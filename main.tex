@@ -1,0 +1,138 @@
+\documentclass{scrartcl}
+\usepackage{microtype}
+\usepackage{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\input{mathpkg.tex}
+% header and footer with scrlayer-scrpage
+\usepackage{scrlayer-scrpage}
+\usepackage{fleqn}
+\usepackage{xcolor}
+
+\lohead*{Höhere Analysis}
+\rohead*{Nils Witt}
+\cofoot*{}
+\lofoot*{Seite \thepage}
+\pagestyle{scrheadings}
+\title{Konvergenz in $L^p$-Räumen, Konvergenzsätze des Lebesgue-Integrals}
+\date{Wintesemester 2020}
+\subtitle{Analyis 3}
+\author{}
+\setlength\parindent{0pt}
+
+\begin{document}
+\maketitle
+Sei stets $(X,\mathscr{A},\mu)$ ein Maßraum.
+\section{Konvergenzsätze: Lebesgue-Integral, $L^p$-Räume}
+Wir definieren noch einmal die grundlegenden Begriffe.
+    \begin{defn}[$\mathscr{L}^p$-Räume] Sei $f:X\to \R$ messbar, wir definieren 
+        \[
+        \Vert f\Vert_p \coloneqq \left(\int_X \vert f\vert^p \D \mu\right)^{1/p} \quad \mathrm{mit } \ 1\le p<\infty    
+        \]
+        und wir setzen $\Vert f\Vert_\infty \coloneqq \esssup_X \vert f\vert$. Dann definieren wir für $1\le p\le \infty$
+        \[
+        \mathscr{L}^p(X,\mu) = \{f:X\to \R \ \mathrm{messbar} \mid \Vert f\Vert_p<\infty\}    
+        \]
+    \end{defn}
+    Dass $\Vert \cdot\Vert_p$ auf $\mathscr{L}^p(X)$ keine Norm ist, liegt daran, dass 
+    nicht $\Vert f\Vert_p = 0 \iff f=0$ gilt. Wir lösen dieses Problem.\\
+    Sei $\sim$ eine Äquivalenzrelation auf $\mathscr{L}^p(X)$ gegeben durch $f\sim g\iff f=g \ \mu\text{-fast-überall}$. Dann definieren wir
+    \[
+    L^p(X,\mu) \coloneqq \mathscr{L}^p(X,\mu)/\sim    
+    \] 
+     Zuerst zitieren wir die wichtigsten 
+    Konvergenzsätze für das Lebesgue-Integral
+    \begin{satz}[Satz von der monotonen Konvergenz] Sei $f_k:X\to \R, \ k\in \N$ eine Folge von Funktionen mit 
+    \begin{enumerate}
+        \item $f_k$ messbar für alle $k\in \N$
+        \item $f_k$ monoton wachsend und $f_k \to f$ für $k\to \infty$
+    \end{enumerate} Dann gilt, dass $f$ messbar ist und
+        \[
+        \lim_{k\to \infty} \int_X f\ \D \mu = \int_X \lim_{k\to \infty} f\ \D \mu    
+        \]
+    \end{satz}
+    \begin{satz}[Satz von der dominierten Konvergenz] Sei $f_k:X\to \R$ messbar. Ferner gelte ${\sup_k \Vert f_k\Vert \le g}$ für eine integrierbare Funktion $g:X\to \R$, dann gilt
+        \[
+        \lim_{k\to \infty} \int_X f_k \ \D \mu = \int \lim_{k\to\infty } f_k \ \D \mu    
+        \]
+    \end{satz}
+    \begin{bem}[Monotone Konvergenz in $L^p$] Sei $1\le p<\infty$ und sei 
+        $f_n\in L^p(X)$ für $n\in \N$, dann gelte
+        \begin{enumerate}
+            \item $f_n \to f$ $\mu$-fast-überall. 
+            \item $f_n \le g, \ \forall n\in \N$ und $\mu$-fast-überall für ein $g\in L^p(X)$
+        \end{enumerate}
+        Dann gilt $f\in L^p(X)$ und $f_k \to f$ in $L^p(X)$.
+    \end{bem}
+    \textcolor{red}{\textbf{Gegenbeispiel für $p=\infty$:} Betrachte $(\R, \mathscr{L}^1, \lambda)$. Sei $f_k=\chi_{[k,k+1]}$, dann ist $f_k\to 0$ punktweise, es ist $f_k\le 1=g$ und $g\in L^\infty(X)$
+    , aber es ist auch 
+    \[
+    \Vert f_k - 0\Vert_\infty = \Vert f_k\Vert_\infty = 1, \ \forall k\in \N    
+    \]
+    also gilt nicht $f_k\to 0$ in $L^\infty(X)$.}
+    \begin{lemma}[Hölder-Ungleichung] Sei $f\in \mathscr{L}^p(X)$ und $g\in\mathscr{L}^{p_*}(X)$ mit $p^{-1}+p_*^{-1}=1$ 
+        dann gilt 
+        \[
+        \Vert fg\Vert_1 = \int_X \vert fg\vert \ \D \mu \le \Vert f\vert_p \cdot \Vert g\Vert_{p_*}     
+        \]
+    \end{lemma}
+    \begin{lemma}[Minkowski-Ungleichung] Für $1\le p\le \infty$ seien $f,g\in \mathscr{L}^p(X)$, dann gilt 
+        \[
+        \Vert f+g\Vert_p \le \Vert f\Vert_p + \Vert g\Vert_p    
+        \]
+        Dadurch wird $\Vert\cdot\Vert_p$ auf $\mathscr{L}^p(X)$ zu einer Seminorm.
+    \end{lemma}
+    \section{Vergleich der Konvergenzbegriffe}
+    \begin{defn}[We're getting closer] Wir führen die Konvergenzbegriffe alle auf. Sei dazu $f_n:X\to \R$ eine Folge von Funktionen und $f:X\to \R$.
+        \begin{enumerate}
+            \item Wir sagen $f_n \to f$ konvergiert gleichmäßig, falls
+            \[
+            \sup_{x\in X} \vert f_n(x)-f(x)\vert \xrightarrow{n\to \infty} 0    
+            \] 
+        \item Wir sagen $f_n$ konvergiert punktweise gegen $f$, falls 
+        \[
+        f_n(x) \xrightarrow{n\to \infty} f(x), \ \forall x\in X    
+        \]
+        \item $f_n$ konvergiert gegen $f$ punktweise $\mu$-fast-überall, falls 
+        \[
+        \exists N\subset X:  \mu(N)= 0 \ \text{und} \ f_n(x)\xrightarrow{n\to \infty} f(x), \ \forall x\in X\setminus N    
+        \]
+        \item $f_n$ konvergiert im Maß $\mu$, falls $f_n,f$ messbar und für $\epsilon>0$ beliebig gilt
+        \[
+        \mu(\{x\in X : \vert f_k(x)-f(x)\vert > \epsilon\}) \xrightarrow{k\to \infty} 0    
+        \]
+        \item Für $f_n\in L^p(X)$ sagen wir, dass $f_n$ in $L^p(X)$ konvergiert, falls
+        \[
+        \Vert f_n - f\Vert_p \xrightarrow{n\to \infty} 0    
+        \]
+        Insbesondere folgt dann $f\in L^p(X)$, da $\mathscr{L}^p(X)$ ein Banachraum ist.
+        \end{enumerate}
+    \end{defn}
+    Jetzt vergleichen wir die Konvergenzbegriffe. Seien $f_n,f:X\to \R, \ n\in \N$ messbar. 
+    \begin{enumerate}
+        \item Falls $f_k \to f$ im Maß, dann existiert eine Teilfolge $f_{kj}$ mit $f_{kj}\to f$ $\mu$-fast-überall.
+        \textcolor{red}{Gilt die Umkehrung? Im Allgemeinen können wir auch nicht sagen, dass $f_n\to f$ punktweise, denn:\\
+        Sei $f_1=\chi_{[0,1]}$ und wir definieren $f_{kj} = \chi_{[j/k,(j+1)/k]}, \ j=0,\ldots,k-1$. Dann nummerieren wir die $f_{kj}$ als $f_n$ und es gilt $f_n\to 0$ im Lebensguemaß, aber es gilt nicht $f_n \to 0$ punktweise.}
+        \item Falls \textbf{$\mu(X)<\infty$}, dann gilt: $f_k\to f$ $\mu$-fast-überall, so folgt $f_k\to f$ im Maß.
+        \textcolor{red}{\\ Im Allgemeinen gilt das nicht. Sei $X=\R$ mit Lebensgue-Maß. Sei $f_k=\chi_{[k,k+1]}$, dann ist $f_k\to 0$ punktweise, also insbesondere punktweise $\mu$-fast-überall, aber es ist
+        \[
+        \mu(\{x\in X : \vert f_k(x)\vert > \epsilon\}) = \begin{cases} \mu([k,k+1]=1, & \epsilon<1\\
+        0, & \text{sonst} \end{cases}    
+        \] Also liegt für $\epsilon <1$ keine Konvergenz im Maße vor.}
+    \end{enumerate}
+    \textbf{Endliche Maßräume:}\begin{itemize}
+        \item[--] Gleichmäßige Konvergenz $\implies$ Konvergenz in $L^p$, für alle $p\in[1,\infty] \implies$ Konvergenz im Maß
+        \item[--] Konvergenz in $L^p$ $\implies$ Konvergenz in $L^q$ für $1\le q\le p$   
+    \end{itemize}
+    Insbesondere letzteres gilt \textbf{nicht} in allgemeinen Maßräumen!\\ 
+    \textbf{Allgemeine Maßräume:}
+    \begin{itemize}
+        \item[--] Konvergenz im Maß ist schwächer als jede $L^p$-Konvergenz, denn es gilt
+        \[
+            \Vert f_n-f\Vert_p \to 0 \ \text{für ein} \ p\in[1,\infty] \implies f_n \to f \ \text{im Maß} \ \mu 
+        \]
+        \item[--] Gleichmäßige Konvergenz $\implies$ punktweise Konvergenz $\implies$ punktweise fast-überall Konvergenz
+        \item[--] Gleichmäßige Konvergenz $\implies$ Konvergenz in $L^\infty$ $\implies$ punktweise fast-überall
+    \end{itemize}
+\end{document}
