@@ -15,15 +15,14 @@
 \cofoot*{}
 \lofoot*{Seite \thepage}
 \pagestyle{scrheadings}
-\title{Konvergenz in $L^p$-Räumen, Konvergenzsätze des Lebesgue-Integrals}
-\date{Wintesemester 2020}
-\subtitle{Analyis 3}
+\title{Integrationstheorie in der Analysis 3}
+\date{Wintersemester 2020}
 \author{}
 \setlength\parindent{0pt}
 
 \begin{document}
 \maketitle
-Sei stets $(X,\mathscr{A},\mu)$ ein Maßraum.
+Seien stets $(X,\mathscr{A},\mu)$ und $(Y,\mathscr{F},\nu)$ ein Maßräume.
 \section{Konvergenzsätze: Lebesgue-Integral, $L^p$-Räume}
 Wir definieren noch einmal die grundlegenden Begriffe.
     \begin{defn}[$\mathscr{L}^p$-Räume] Sei $f:X\to \R$ messbar, wir definieren 
@@ -135,4 +134,33 @@ Wir definieren noch einmal die grundlegenden Begriffe.
         \item[--] Gleichmäßige Konvergenz $\implies$ punktweise Konvergenz $\implies$ punktweise fast-überall Konvergenz
         \item[--] Gleichmäßige Konvergenz $\implies$ Konvergenz in $L^\infty$ $\implies$ punktweise fast-überall
     \end{itemize}
+    \newpage 
+    \section{Fubini, Tonelli und Transformationsformel}
+    \begin{lemma}[Tonelli] Seien $\Xmeas, \Ymeas$ hier $\sigma$-endlich. Sei \(f:X\times Y \to [0,\infty]\) bezüglich $\mathscr{E}\times\mathscr{F}$ messbare und \textbf{nicht-negative}
+        Funktionen, dann gilt
+        \begin{align*}
+            \int_{X\times Y} f(x,y)  \D (\mu \times \nu) &= \int_X\left( \int_Y f(x,y)  \D \nu(y)\right) \D \mu(x) \\ &= \int_Y\left( \int_X f(x,y)  \D \mu(x)\right) \D \mu(y)
+        \end{align*}
+        Falls also eine Funktion bezüglich der Produk-$\sigma$-Algebra zweier Maßräume messbar ist, können wir die Integrationsreihenfolge vertauschen.
+    \end{lemma}
+    \textcolor{blue}{\textbf{Beispiel:} Sei $f:[0,1]^2\to \R, \ f(x,y)=2x^4y^2$, dann ist $f$ nichtnegativ und stetig, also insbesondere Borel-messbar, also gilt 
+    \begin{align*}
+        \int_{[0,1]^2} 2x^4 y^2 \ \D \mathscr{L}^2 &= \int_{[0,1]}\int_{[0,1]} 2x^4 y^2 \ \D y \D x \\
+        & = \int_{[0,1]} 2x^4 \int_{[0,1]} y^2 \D y\D x = \int_{[0,1]} 2x^4 \left[\frac{1}{3}y^3\right]_0^1 \D x\\
+        &= \int[0,1] 2x^4 \cdot \frac{1}{3} \D x = \frac{2}{3}\int_{[0,1]} x^4 \D x = \frac{2}{3}\cdot \frac{1}{5} = \frac{2}{15}
+    \end{align*} }
+    \begin{satz}[Fubini] 
+        Seien $\Xmeas, \Ymeas$ hier $\sigma$-endlich. Sei \(f:X\times Y \to \R\) bezüglich $\mathscr{E}\times\mathscr{F}$ messbar, dann gilt
+        \begin{align*}
+            \int_{X\times Y} \vert f(x,y)\vert \D (\mu \times \nu) &= \int_X \left(\int_Y \vert f(x,y)\vert \D \nu(y)\right)\D \mu(x) \\ 
+             &= \int_Y \left(\int_X \vert f(x,y) \vert \D \mu(x) \right)\D \nu(y) 
+        \end{align*}
+        Ist insbesondere eines der Integrale endlich, dann können die Betragsstriche weggelassen werden.
+    \end{satz}
+    \begin{satz}[Transformationsformel] Seien $U,V\subset \R^n$ offen und $F\in L^1(V)$ und sei $\phi\in C^1(U,V)$ ein $C^1$-Diffeomorphismus, dann gilt
+        \[
+        \left(\int_V F \ \D x =\right)\int_{\phi(U)} F \ \D x = \int_U (F\circ \phi) \vert \det (D\phi)\vert \ \D x    
+        \]
+        
+    \end{satz}
 \end{document}
