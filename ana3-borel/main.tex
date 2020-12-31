@@ -1,0 +1,99 @@
+\documentclass{scrartcl}
+\usepackage{microtype}
+\usepackage{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\input{mathpkg.tex}
+% header and footer with scrlayer-scrpage
+\usepackage{scrlayer-scrpage}
+\usepackage{fleqn}
+\usepackage{xcolor}
+
+\lohead*{Höhere Analysis}
+\rohead*{Nils Witt}
+\cofoot*{}
+\lofoot*{Seite \thepage}
+\pagestyle{scrheadings}
+\title{Borel-Mengen auf dem $\R^n$.}
+\date{Wintersemester 2020}
+\author{}
+\setlength\parindent{0pt}
+
+\begin{document}
+    \maketitle Seien hier stets $X,X_1$ und $X_2$ nichtleere Mengen. 
+    \begin{lemma}
+        Sei $Y$ eine nichtleere Menge und $f:X\to Y$ eine Abbildung. Sei $\cali{E}$ eine $\sigma$-Algebra auf $X$ und $\cali{F}$ eine $\sigma$-Algebra auf $Y$. Dann sind 
+        \[
+        f^{-1}(\cali{F})=\{f^{-1}(F):F\in \cali{F}\}, \quad  f_*(\cali{E})=\{B\subset Y:f^{-1}(B)\in \cali{E}\}
+        \]
+        $\sigma$-Algebren.
+    \end{lemma}
+    \begin{proof}
+        \begin{enumerate}[(a)]
+            \item Es ist $f^{-1}(\emptyset) = \emptyset$, also $\emptyset\in f^{-1}(\cali{F})$. Jedes $A\in f^{-1}(\cali{F})$ können wir als $A=f^{-1}(F)$ für ein $F\in \cali{F}$ schreiben. Dann ist direkt klar, dass
+            \[
+            A^c =(f^{-1}(F))^c = f^{-1}(F^c)    
+            \] wegen $F^c\in \cali{F}$ auch $A^c\in f^{-1}(\cali{F})$ ist. Seien noch $A_n\in f^{-1}(\cali{F})$ für $n\in \N$, so existieren $F_n \in \cali{F}$ mit $f^{-1}(F_n) = A_n$ für alle $n\in \N$. Folglich ist
+            \[
+            \bigcup_{n\in \N} A_n = \bigcup_{n\in \N}f^{-1}(F_n) = f^{-1}(\bigcup_{n\in \N}F_n)    
+            \] und daher wegen $\bigcup_{n\in \N}F_n \in \cali{F}$ auch $\bigcup_{n\in \N}A_n\in f^{-1}(\cali{F})$.
+        \item Da $\emptyset\in \cali{E}$ und $f^{-1}(\emptyset) = \emptyset$, ist auch $\emptyset\in f_*(\cali{E})$. Sei $A\in f_*(\cali{E})$, dann gilt
+        \[
+        f^{-1}(A^c) = f^{-1}(A)^c    
+        \] und wegen $f^{-1}(A)\in \cali{E}$, ist auch $f^{-1}(A)^c\in \cali{E}$, also ist $A^c\in f_*(\cali{E})$. Seien $A_n\in f_*(\cali{E})$ für $n\in \N$. Dann ist
+        \[
+        f^{-1}(\bigcup_{n\in\N}A_n) = \bigcup_{n\in\N} f^{-1}(A_n)    
+        \] und da $f^{-1}(A_n) \in \cali{E}, \ \forall n\in \N$, ist auch $\bigcup_{n\in\N} f^{-1}(A_n)\in \cali{E}$.
+        \end{enumerate}
+    \end{proof}
+    \begin{defn}[Borelsche $\sigma$-Algebra und topolgischer Raum]
+        Sei $(X,\mathfrak{T})$ ein topolgischer Raum. Das heißt $\mathfrak{T}\subset \mathfrak{P}(X)$ mit den Eigenschaften
+        \begin{enumerate}[(1)]
+            \item $X,\emptyset \in \mathfrak{T}$
+            \item Für $A,B \in \mathfrak{T}$ gilt $A\cap B\in \mathfrak{T}$
+            \item Sei $I\neq \emptyset$ eine beliebige nichtleere Indexmenge und $A_i\in \mathfrak{T}$, dann ist $\bigcup_{i\in I} A_i \in \mathfrak{T}$.
+        \end{enumerate}
+        Wir nennen $\sigma(\mathfrak{T})=\cali{B}(X)$ die Borel-$\sigma$-Algebra auf $X$.
+    \end{defn}
+    Seien $(X_j,\cali{A}_j)$ für $j=1,2$ messbare Räume. Wir definieren die Produkt-$\sigma$-Algebra wie folgt
+    \[
+    \cali{A}_1\otimes \cali{A}_2 \coloneqq \sigma(\{A\times B : A\in \cali{A}_1, B\in \cali{A}_2 \})   
+    \] Ferner bezeichnen wir mit 
+    \[
+    \cali{A}_1 \boxtimes \cali{A}_2 \coloneqq \{A\times B : A\in \cali{A}_1, B\in \cali{A}_2\}    
+    \]
+    die Menge der kartesischen Produkte. Das nächste Lemma war das eigentliche Ziel, das ich dir zeigen wollte. Es ist eine Verallgemeinerung davon, dass $\cali{B}(\R)\times \cali{B}(\R) = \sigma(\{A_1\times A_2 : A_1,A_2\subset \R \ \text{offen}\})$. 
+    Dass sich also die Produkt-$\sigma$-Algebra von den kartesischen Produkten von Erzeugern erzeugen lässt. Also bei uns war es, dass die Produkt-$\sigma$-Algebra die kleinste $\sigma$-Algebra ist, die 
+    alle kartesischen Produkte enthält und falls es Erzeuger gibt, liefert uns das nachfolgende Lemma, dass die Produkt-$\sigma$-Algebra aus den kartesischen Produkten der Erzeuger erzeugt wird.
+    \begin{lemma}
+        Seien $\cali{S}_j\in \mathfrak{P}(X_j)$ Systeme von Teilmengen mit $X_j \in \cali{S}_j$ für $j=1,2$. So gilt 
+        \[
+            \sigma(\cali{S}_1) \otimes \sigma(\cali{S}_2) = \sigma(\cali{S}_1\boxtimes \cali{S}_2)
+        \]
+        \begin{proof}
+            Wir definieren $\cali{A}_j = \sigma(\cali{S}_j)$ für $j=1,2$. Es gilt $\sigma(\cali{S}_1\boxtimes \cali{S}_2)\subset \sigma(\cali{S}_1)\otimes \sigma(\cali{S}_2)$, denn sei $S_1\times S_2\in \cali{S}_1\boxtimes \cali{S}_2$, dann gilt insbesondere, dass $S_1\in \sigma(\cali{S}_1)=\cali{A}_1$ und $S_2\in \sigma(\cali{S}_2)=\cali{A}_2$, also ist $S_1\times S_2 \in \{A\times B:A\in \cali{A}_1, B \in \cali{A}_2\}$ und daher nach Definition $S_1\times S_2\in \sigma(\{A\times B:A\in \cali{A}_1, B \in \cali{A}_2\})=\cali{A}_1\otimes \cali{A}_2$. \\
+            Da $\cali{A}_1\otimes \cali{A}_2$ eine $\sigma$-Algebra ist, die $\cali{S}_1\boxtimes \cali{S}_2$ enthält, folgt die Behauptung. Noch die andere Inklusion. Wir definieren die $\sigma$-Algebren
+            \[
+            \widetilde{\cali{A}_j} \coloneqq (\mathrm{pr}_j)_* (\sigma(\cali{S}_1 \boxtimes \cali{S}_2))    
+            \]
+            wobei $\pr_j$ die Projektion von $X_1\times X_2$ auf den Raum $X_j$ meint, für $j=1,2$. Nun gilt \textit{nach Voraussetzung}, dass $X_j \in\cali{S}_j$ für $j=1,2$. Wir zeigen, dass $\cali{A}_j\subset \widetilde{\cali{A}_j}$ für $j=1,2$. Sei nun $j=1$ und sei $S_1 \in \cali{S}_1$ beliebig, dann ist 
+            \[
+                \pr_1^{-1}(S_1) = S_1 \times X_2 \in \cali{S}_1\boxtimes \cali{S}_2 \subset \sigma(\cali{S}_1\boxtimes \cali{S}_2)
+            \] weil $S_1\in \cali{S}_1$ und $X_2\in \cali{S}_2$. Nach Definition ist 
+            \[
+            \cali{A}_1 = (\pr_1)_*(\sigma(\cali{S}_1\boxtimes \cali{S}_2)) = \{A\in X_1\times X_2 : \pr_1^{-1}(A)\in \sigma(\cali{S_1}\boxtimes\cali{S}_2)\}    
+            \]Daher ist also $S_1\in (\pr_1)_*(\sigma(\cali{S}_1\boxtimes\cali{S}_2))=\widetilde{\cali{A}_1}$. Also ist $\widetilde{\cali{A}_1}$ eine $\sigma$-Algebra auf $X_1$, die $\cali{S}_1$ enthält, also ist $\sigma(\cali{S}_1) = \cali{A}_1 \subset \widetilde{\cali{A}_1}$. Analog für $j=2$.
+            Daher haben wir, dass $\cali{A}_j \subset \widetilde{\cali{A}_j}$ für $j=1,2$. \\ Sei nun $A_1\times A_2\in \sigma(\cali{S}_1)\boxtimes \sigma(\cali{S}_2) = \cali{A}_1\boxtimes \cali{A}_2$. Dann gilt 
+            \begin{align*}
+                A_1\times X_2 &= (\pr_1)^{-1}(A_1) \in \sigma(\cali{S}_1\boxtimes \cali{S}_2) \\
+                X_1 \times A_2 &= (\pr_2)^{-1}(A_2) \in \sigma(\cali{S}_1\boxtimes \cali{S}_2)
+            \end{align*}
+            weil gilt, dass $\sigma(\cali{S}_1) = \cali{A}_1 \subset  \widetilde{\cali{A}_1}= (\pr_1)_*(\sigma(\cali{S}_1\boxtimes\cali{S}_2))$ das bedeutet nach Definition nichts anderes, als, dass für alle $M_1\in \sigma(\cali{S}_1)=\cali{A}_1$ gilt, dass $\pr_1^{-1}(M_1)\in \sigma(\cali{S_1}\boxtimes \cali{S}_2)$. Aus analogen Gründen sieht man dann die zweite Zeile ein. \\
+            Nun bemerkt man noch, dass $A_1\times A_2 = (A_1\times X_2)\cap (X_1\times A_2)$. Ferner gilt, dass $A_1\times X_2,X_1\times A_2\in \sigma(\cali{S}_1\boxtimes\cali{S}_2)$, da die rechte Menge eine $\sigma$-Algebra ist, gilt auch, dass $A_1\times A_2\in \sigma(\cali{S}_1\boxtimes\cali{S}_2)$. Daher gilt, dass $\cali{A}_1\boxtimes \cali{A}_2 \subset \sigma(\cali{S}_1\boxtimes\cali{S}_2)$. Also gilt 
+            \[
+            \cali{A}_1\otimes \cali{A}_2 = \sigma(\cali{A}_1\boxtimes \cali{A}_2) \subset \sigma(\cali{S}_1\boxtimes \cali{S}_2)    
+            \] was zu zeigen war.
+        \end{proof}
+    \end{lemma}
+\end{document}

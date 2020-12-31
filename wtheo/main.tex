@@ -1,0 +1,171 @@
+\documentclass{scrartcl}
+\usepackage{microtype}
+\usepackage{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+% header and footer with scrlayer-scrpage
+\usepackage{scrlayer-scrpage}
+\usepackage{fleqn}
+
+\lohead*{Einführung in die Wahrscheinlichkeitstheorie und Statistik}
+\rohead*{Nils Witt}
+\cofoot*{}
+\lofoot*{Seite \thepage}
+\pagestyle{scrheadings}
+\title{Potentiell wichtige Zusammenhänge}
+\date{Wintersemester 2020/2021}
+\author{}
+\setlength\parindent{0pt}
+
+\input{mathpkg.tex}
+
+\begin{document}
+    \maketitle
+    \begin{defn}[Borel-$\sigma$-Algebra]
+        Sei $(X,\cali{T})$ ein topologischer Raum. Dann heißt $\sigma(\cali{T})$ die Borel-$\sigma$-Algebra und wird mit $\cali{B}(X)$ bezeichnet.
+    \end{defn}
+    Sei $(X,\cali{A},\P)$ ein Wahrscheinlichkeitsraum. 
+    \begin{defn}[Verteilung] Sei $(X,\cali{A})=(\R,\cali{B}(\R))$. Dann definieren wir die 
+        Verteilungsfunktion $\F:\R\to [0,1]$ durch 
+        \[
+        \F(x) \coloneqq \P((-\infty,x]), \quad \forall x\in \R    
+        \]
+    Ist $X\subset \R$ abzählbar und $\cali{A}=\mathfrak{P}(X)$ (insbesondere also für $X=\N$) und $\p$ die Zähldichte von $\P$,
+    so wird folgendes Maß $\Tilde{\P}$ auf $(\R,\cali{B}(\R))$ induziert 
+    \[
+        \Tilde{\P}(B) \coloneqq \sum_{\omega \in X} \p(\omega) \delta_B(\omega), \quad \forall B\in \cali{B}(\R) \tag{$*$}
+    \]
+    mit der zugehörigen Verteilungsfunktion
+    \[
+    \Tilde{\F}(x) = \tilde{\P}((-\infty,x])), \ \forall x\in \R   \tag{$**$} 
+    \]
+    das Wahrscheinlichkeitsmaß und die Verteilung in ($*$) und ($**$) heißen diskret.
+    \end{defn}
+    \begin{defn}[Wahrscheinlichkeitsdichte] Sei $\f:\R^n\to \R$ eine Lebesgue-integrierbare Funktion mit 
+        \[
+            \int_{\R^n} \f(x) d\cali{L}^n = 1
+        \]
+        so heißt $\f$ eine Wahrscheinlichkeitsdichte auf $\R^n$.
+    \end{defn}
+    \begin{satz}[Aus Dichte Maß bekommen] Jede Dichte $\f:\R^n\to \R$ erzeugt ein eindeutiges Wahrscheinlichkeitsmaß $\P$ auf $(\R^n,\cali{B}(\R^n))$, indem wir für $a=(a_1,\ldots,a_n), b=(b_1,\ldots,b_n)\in \R^n$ mit $a\le b$ (komponentenweise) setzen
+        \[
+        \P([a,b]) \coloneqq \int_a^b \f(x) \ \D x = \int_{a_1}^{b_1} \cdots \ \int_{a_n}^{b_n} \f(x_1,\ldots,x_n) \ \D x_n \cdots \ \D x_1
+        \]Dann gilt für alle $B\in \cali{B}(\R)$, dass \[\P(B)=\int_B \f(x)\ \D x\]
+    \end{satz}
+    \begin{defn}
+        Ein Wahrscheinlichkeitsmaß $\P$ auf $(\R^n,\cali{B}(\R^n))$ heißt stetig, falls eine Dichte $\f:\R^n\to\R$ existiert, sodass 
+        \[
+        \P(B) = \int_B \f(x) \ \D x, \ \forall B\in\cali{B}(\R)    
+        \]
+        der Raum $(\R^n,\cali{B}(\R^n),\P)$ heißt dann ein stetiger Wahrscheinlichkeitsraum.
+    \end{defn}
+    \begin{lemma}[Verteilungen berechnen]
+        Ist $\f$ Dichte eines Wahrscheinlichkeitsmaßes $\P$ auf $\cali{B}(\R)$, dann gilt für $x\in \R$, dass 
+        \[
+        \F(x) = \int_{-\infty}^x \f(t) \ \D t    
+        \]
+    \end{lemma}
+    \begin{defn}[Produktdichte] Seien $\f_1,\ldots,\f_n$ Dichten auf $(\R,\cali{B}(\R))$, so heißt 
+        \[
+        \f(x) = \prod_{i=1}^n \f_i(x_i) \text{ mit } x=(x_1,\ldots,x_n)\in \R^n    
+        \]
+        die Produktdichte von $\f_1,\ldots,\f_n$ auf $\R^n$
+    \end{defn}
+    \begin{defn}
+    Seien $(\Omega,\cali{A})$ und $(\mathcal{S},\cali{S})$ Maßräume. Eine Abbildung $X:\Omega\to\mathcal{S}$ heißt $(\cali{A}$-$\cali{S})$-messbar, falls 
+    \[
+    \sigma(X) \coloneqq X^{-1}(\cali{S})= \{X^{-1}(S):S\in \cali{S}\} \subset \cali{A}    
+    \] Etwas konkreter heißt das, dass $\forall S\in \cali{S}$ gilt $X^{-1}(S)\in \cali{A}$. Eine $\cali{A}$-$\cali{S}$-messbare Abbildung heißt Zufallsvariable. $\sigma(X)$ heißt die Initial-$\sigma$-Algebra von $X$ und sie ist die kleinste $\sigma$-Algebra bezüglich der $X$ messbar ist.
+    \end{defn}
+    \begin{lemma}
+        Sei $X:\Omega \to \mathcal{S}$ eine Zufallsvariable und $\cali{E}\subset \mathcal{S}$, dann gilt 
+        \[
+        X^{-1}(\sigma(\cali{E})) = \sigma(X^{-1}(\cali{E}))    
+        \]
+    \end{lemma}
+    \begin{lemma}[Messbarkeit reicht auf Erzeuger]
+        Sei $\cali{E}$ ein Erzeuger von $\cali{S}$, das heißt $\sigma(\cali{E}) = \cali{S}$, dann gilt 
+        \[
+        X^{-1}(\cali{E})\subset \cali{A} \Rightarrow X \text{ ist } (\cali{A}\text{-}\cali{S})\text{-messbar}    
+        \]
+    \end{lemma}
+    Messbarkeit für Abbildungen nach $(\overline{\R}, \cali{B}(\overline{\R}))$ und nach $(\R^n,\cali{B}(\R^n))$ ist ganz natürlich
+    \begin{lemma}
+        $(\Omega,\cali{A})$ ein messbarer Raum. $X$ sei eine $(\overline{\R},\cali{B}(\overline{\R}))$-wertige Abbildung. $X$ ist eine Zufallsvariable genau dann, wenn 
+        \[
+            \{X\le x\} = X^{-1}([-\infty,x]) \in \cali{A}, \quad \forall x\in \R
+        \] 
+        Ferner ist eine Funktion $X:\Omega\to \R^n$ eine $(\R^n,\cali{B}(\R^n))$-wertige Zufallsvariable -- ein Zufallsvektor -- falls jede Komponente eine Zufallsvariable ist.
+    \end{lemma}
+    \begin{defn}[Furchtbare Notation]
+        Sei $(\Omega,\cali{A})$ ein messbarer Raum und $X:(\Omega,\cali{A})\to(\mathcal{S},\cali{S})$ eine Zufallsvariable, dann nennen wir
+        \begin{enumerate}[(1)]
+            \item Falls $(\mathcal{S},\cali{S})=(\overline{\R},\cali{B}(\overline{\R}))$, so heißt $X$ eine numerische Zufallsvariable. Notation: $X\in \overline{\cali{A}}$. \\
+            Falls $(\mathcal{S},\cali{S})=(\overline{\R}^+,\cali{B}(\overline{\R}^+))$, so heißt $X$ eine positive, numerische Zufallsvariable. Notation: $X\in \overline{\cali{A}}^+$.
+            \item Falls $(\mathcal{S},\cali{S})=(\R,\cali{B})$, so heißt $X$ eine reelle Zufallsvariable, Notation: $X\in \cali{A}$
+            Falls $(\mathcal{S},\cali{S})=(\R^+,\cali{B}(\R^+))$, so heißt $X$ eine positive reelle Zufallsvariable, Notation: $X\in \cali{A}^+$.
+            \item Falls $(\mathcal{S},\cali{S})=(\R^n,\cali{B}(\R^n))$, so heißt $X$ ein Zufallsvektor, kurz: $X\in \cali{A}^n$.
+        \end{enumerate} 
+    \end{defn}
+    \textit{Philosophie: Verknüpfungen von Zufallsvariablen sind wieder Zufallsvariablen.
+    }\begin{lemma}
+        Seien $X,Y:(\Omega,\cali{A})\to(\overline{\R},\cali{B}(\overline{\R}))$ Zufallsvariablen. Dann gilt
+        \begin{enumerate}[(a)]
+            \item Für alle $a\in \R$ ist $aX$ eine Zufallsvariable mit der Konvention ($0\times \infty =0$).
+            \item $X\lor Y=\min(X,Y)$ und $X\land Y=\max(X,Y)$ sind Zufallsvariablen.
+            \item $\{X\le Y\}, \{X<Y\}, \{X=Y\}\in \cali{A}$.
+        \end{enumerate}
+    \end{lemma}
+    \begin{lemma} Seien $X_1,\ldots,X_n\in \cali{A}$, d.h. es sind $(\R,\cali{B})$-wertige Zufallsvariablen und sei $h:\R^n\to \R^m$ messbar. Dann sei $X=(X_1,\ldots,X_n)\in \cali{A}^n$ der durch die $X_1,\ldots,X_n$ entstehende Zufalsvektor, dann ist $h(X) = h\circ X \in \cali{A}^m$, also eine $(\R^m,\cali{B}(\R^m))$-wertige Zufallsvariable.
+    \end{lemma} Insbesondere ist der Fall für $h:\R^2\to \R, \ h(x,y)=x+y$ und $h(x,y)=x\cdot y$, sowie $h':\R\times\R\setminus\{0\}\to \R$ mit $h(x,y)= x/y$ interessant. 
+    \begin{lemma}[Messbarkeit ist Limesstabil] Sei $(X_n)_{n\in \N}$ eine Folge in $\overline{\cali{A}}$. Dann gilt
+        \begin{enumerate}[(1)]
+            \item $\sup_{n\in \N} X_n, \ \inf_{n\in \N} X_n, \ \limsup_{n\in \N} X_n, \ \liminf_{n\in\N} X_n \in \overline{\cali{A}}$
+            \item Falls der Limes existiert, so stimmt er mit dem Limes superior und Limes inferior überein. Also gilt dann $\lim_{n\in \N}X_n \in \overline{\cali{A}}$.
+        \end{enumerate}
+    \end{lemma}
+    Sei $(\Omega,\cali{A},\P)$ ein Maßraum und $X:(\Omega,\cali{A})\to (\mathcal{S},\cali{S})$ eine Zufallsvariable, wir können wir (möglichst kanonisch) auf $(\mathcal{S},\cali{S})$ ein Wahrscheinlichkeitsmaß definieren?
+    \begin{defn}[Verteilung einer Zufallsvariable]
+        $(\Omega,\cali{A},\P)$ Maßraum und $(\mathcal{S},\cali{S})$ messbarer Raum, sowie $X:\Omega\to\mathcal{S}$ eine Zufallsvariable, dann induziert $X$ ein Wahrscheinlichkeitsmaß auf $(\mathcal{S},\cali{S})$ durch
+        \[
+        \P^X(S) = (\P\circ X^{-1})(S), \ \text{für ein } S\in \cali{S}    
+        \] Falls sie existiert, nennen wir die Verteilungsfunktion von $\P^X$ analog $\F^X$.
+        \end{defn}
+        Wie kann man Verteilungen auf mehrere Zufallsvariablen verallgemeinern? \\
+        Sei $\mathcal{I}\neq \emptyset$ und $((\mathcal{S}_i,\cali{S}_i))_{i\in \mathcal{I}}$ eine Familie messbarer Räume, $(\Omega,\cali{A},\P)$ ein Maßraum und $X_i:(\Omega,\cali{A})\to(\mathcal{S}_i,\cali{S}_i)$ seien für $i\in \mathcal{I}$ Zufallsvariablen.
+        \begin{defn}[Produkt-$\sigma$-Algebra für beliebige Familien]
+            Wir definieren die Produkt-$\sigma$-Algebra auf $\mathcal{S}_\mathcal{I}\coloneqq \bigtimes_{i\in \mathcal{I}} \mathcal{S}_i$ auf möglichst natürliche Weise, nämlich als die kleinste $\sigma$-Algebra, s.d. die Projekion $\pi_i:\mathcal{S}_\mathcal{I} \to \mathcal{S}_i$ für alle $i\in \mathcal{I}$ messbar sind. 
+            \\ In Formel haben wir 
+            \[
+            \cali{S}_\mathcal{I} \coloneqq \bigvee_{i\in \mathcal{I}} \sigma(\pi_i) = \sigma\left(\bigcup_{i\in \mathcal{I}}\sigma(\pi_i)\right)     
+            \]
+        \end{defn}
+        Wieso ist das sinnvoll? Seien $(M_i,\cali{T}_i)_{i\in I}$ für eine nicht leere Indexmenge $I$ eine Familie topologischer Räume, dann ist die Produkttopologie auf $M=\bigtimes_{i\in I} M_i$ definiert als die kleinste 
+        Topologie, sodass alle Koordinatenabbildungen stetig sind. 
+        \begin{defn}
+            Sei wie oben $(\mathcal{S}_\mathcal{I},\cali{S}_\mathcal{I})$ der Prdouktraum mit Produkt-$\sigma$-Algebra. Seien $\P_i$ nun Wahrscheinlichkeitsmaße auf $(\mathcal{S}_i,\cali{S}_i)$ für alle $i\in\mathcal{I}$, dann heißt ein Wahrscheinlichkeitsmaß $\P_\mathcal{I}$ auf $(\mathcal{S}_\mathcal{I},\cali{S}_\mathcal{I})$ ein Produktmaß, falls für alle endlichen Teilmengen $J\subset \mathcal{I}$ gilt
+            \[
+            \P_\mathcal{I}\left(\bigcap_{j\in J} \pi_j(S_j)\right) = \prod_{j\in J} \P_j(S_j) \quad \text{für alle } S_j\in \cali{S}_j 
+            \]
+        \end{defn}
+        \begin{lemma}
+            Eine Abbildung $X=(X_i)_{i\in \mathcal{I}}:\Omega\to \mathcal{S}_\mathcal{I}$ die in jeder Komponente $i\in \mathcal{I}$ eine $(\mathcal{S}_i,\cali{S}_i)$-wertige Zufallsvariable ist, ist eine $(\mathcal{S}_\mathcal{I},\cali{S}_\mathcal{I})$-wertige Zufallsvariable. 
+        \end{lemma}
+        \begin{defn}
+            Sei $X=(X_i)_{i\in \mathcal{I}}$ eine Familie von $(\mathcal{S}_i,\cali{S}_i)$-wertigen Zufallsvariablen, dann heißt $\P^X=\P\circ X^{-1}$ die gemeinsame Verteilung der Zufallsvariablen $X_i, \ i\in \mathcal{I}$.
+        \end{defn}
+        \begin{satz}
+            Sei $I=\{1,\ldots,n\}$ und $X_1,\ldots,X_n\in \overline{\cali{A}}$ und $X=(X_1,\ldots,X_n)$, dann gilt 
+            \begin{enumerate}[(a)]
+                \item Sei 
+                \[
+                \F^X(x) = \P(X\le x)=\P(X^{-1}([-\infty,x]))=\P^X([-\infty,x])     
+                \]
+                die gemeinsame Verteilungsfunktion, dann hat jedes der $X_i$ die Randverteilung
+                \[
+                \F^{X_i}(x_i) = \F^X(\infty,\ldots,x_i,\ldots,\infty) = \P(X_1\le \infty,\ldots,X_i\le x_i,\ldots,X_n\le\infty)    
+                \]
+            \end{enumerate}
+        \end{satz}
+    \end{document}
