@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1609324482 "/home/nilsw/github/PrivaterKram/wtheo/main.tex" "/home/nilsw/github/PrivaterKram/wtheo/build/main.pdf" "main" 1609324483
+["pdflatex"] 1609324482 "/home/nilsw/github/PrivaterKram/wtheo/main.tex" "/home/nilsw/github/PrivaterKram/wtheo/build/main.pdf" "main" 1609877689
   "/home/nilsw/github/PrivaterKram/wtheo/build/main.aux" 1609324483 91 e6256b77942c411468fbd88ba0d89bee ""
   "/home/nilsw/github/PrivaterKram/wtheo/main.tex" 1609324481 11422 025f0175660984a4188806e43f51522d ""
   "/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1591545468 2971 def0b6c1f0b107b3b936def894055589 ""
@@ -157,8 +157,8 @@
   "main.tex" 1609324481 11422 025f0175660984a4188806e43f51522d ""
   "mathpkg.tex" 1609263152 1878 5a10fab1d30a0435583860074e734be4 ""
   (generated)
-  "build/main.pdf"
-  "/home/nilsw/github/PrivaterKram/wtheo/build/main.pdf"
   "/home/nilsw/github/PrivaterKram/wtheo/build/main.log"
+  "build/main.pdf"
   "build/main.log"
+  "/home/nilsw/github/PrivaterKram/wtheo/build/main.pdf"
   "build/main.aux"

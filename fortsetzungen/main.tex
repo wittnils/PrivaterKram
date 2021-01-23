@@ -1,0 +1,62 @@
+\documentclass{scrartcl}
+\input{mathpkg.tex}
+\usepackage{ngerman}
+\lohead*{Algebra 1}
+\rohead*{Nils Witt}
+\cofoot*{}
+\lofoot*{Seite \thepage}
+\pagestyle{scrheadings}
+\title{Sachen, die Schmidti nicht ausführt}
+\date{Wintersemester 2020}
+\author{}
+\setlength\parindent{0pt}
+
+
+\begin{document}
+    \maketitle
+    \begin{satz}[1. Fortsetzungssatz] $K$ ein Körper und $K'=K(a)$ ein einfache, algebraische Körpererweiterung von $K$ mit Minimalpolynom $f\in K[X]$. Und sei $\sigma:K\to L$ ein Körperhomomorphismus. 
+        \begin{enumerate}[(i)]
+            \item Ist $\sigma':K'\to L$ ein Körperhomomorphismus, der $\sigma$ fortsetzt, so gilt, dass $\sigma'(a)\in L$ eine Nullstelle von $f^\sigma$ ist. 
+            \item Sei $\beta \in L$ eine Nullstelle von $f$, so gibt es genau eine Fortsetzung $\sigma':K'\to L$ mit $\sigma'(a)=\beta$.
+        \end{enumerate}
+    \end{satz}
+     \begin{satz}[2. Fortsetzungssatz]
+         Sei $K\subset K'$ algebraisch und $\sigma:K\to L$ ein Körperhomomorphismus und $L$ sei algebraisch abgeschlossen, dann gibt es zu $\sigma$ eine Fortsetzung $\sigma':K'\to L$. 
+     \end{satz}
+     \begin{lemma}
+         Sei $L/K$ eine endliche Galoiserweiterung. Und seien $\alpha,\beta\in L$ mit der Eigenschaft, dass $\sigma(\alpha)=\alpha,\ \forall \sigma\in \gal(L/K)$ und, dass $\sigma(\beta)\neq \beta$ und zwar für alle $\sigma\in \gal(L/K)\smallsetminus\{\mathrm{id}\}$.
+         Dann gilt\begin{enumerate}[(i)]
+             \item $L=K(\beta)$ und 
+             \item $\alpha \in K$
+         \end{enumerate} 
+        \end{lemma}
+        \begin{proof}
+        Wir betrachten die einfache Körpererweiterung $K(\beta)=K'$, dann gilt insbesondere, dass $\sigma\restr{K'}\neq \id_{K'}$ falls $\sigma\neq \id_L$. Denn zumindest wird $\beta\in K'$ nicht auf sich selbst geschickt. Insbesondere ist also \[\gal(L/K') = \Aut_{K'}(L) = \{\sigma \in \Aut(L):\sigma\restr{K'}=\id_{K'}\}=\{\id_L\}\]
+        Der Fixkörper von $\gal(L/K')$ ist also $L^{\{\id_L\}}=L$. Da die Zuordnungen aus dem Hauptsatz bijektiv sind, folgt $K'=K(\beta)=L$. \\
+        Zu (ii). Da $\sigma(\alpha)=\alpha$ für alle $\sigma\in \gal(L/K)$ gilt, dass $\gal(L/K(\alpha))=\gal(L/K)$ und nach dem Hauptsatz der Galoistheorie folgt das Resultat, weil \[K(\alpha)=L^{\gal(L/K(\alpha))} = L^{\gal(L/K)}=K\] Also $\alpha\in K$.
+    \end{proof}
+    \begin{lemma}
+        Sei $L/K$ einfach, algebraisch. Also sei $a\in L$ mit $L=K(a)$ und $f\in K[X]$ sei das Minimalpolynom von $a$ und $\overline{K}$ ein algebraischer Abschluss von $K$. \\ Dann gilt, dass $[L:K]_s=$Anzahl der verschiedenen Nullstellen von $f$ in $\overline{K}$.
+    \end{lemma}
+    \begin{proof}
+        Die \glqq Umformulierung von Lemma 3.40\grqq{} machen wir explizit. Sei nun $\alpha\in \overline{K}$ eine Nullstelle von $f$ in $\overline{K}$. Wir können $K\hookrightarrow \overline{K}$ und erhalten nach 3.40(ii) eine eindeutige Fortsetzung der kanonischen Inklusion $\tau:K(a)\to\overline{K}$ mit $\tau(a)=\alpha$ und $\tau\restr{K}=\id_K$. Dann ist $\tau$ ein $K$-Homomorphismus von $K(a)=L\to \overline{K}$ und somit erhalten wir aus jeder Nullstelle genau einen $K$-Homomorphismus $L\to \overline{K}$. \\
+        Sei nun $\sigma:L=K(a)\to \overline{K}$ ein $K$-Homomorphismus, dann ist $\sigma$ durch seinen Wert auf $a$ eindeutig festgelegt und mit dem Standardargument ist $\sigma(a)$ eine Nullstelle von $f$. Zu jedem $K$-Homomorphismus von $L\to \overline{K}$ erhalten wir also dadurch genau eine Nullstelle von $f$ in $\overline{K}$.   
+    \end{proof}
+    \begin{prop}
+        Sei $L/K$ normal und endlich mit $\ristik K=p>0$. Dann ist $L/K$ galoissch genau dann, wenn $\#\Aut_K(L)=[L:K]$.
+    \end{prop}
+    \begin{proof}
+        Es existiert ein eindeutig bestimmter Zwischenkörper $K_i$ von $L/K$ mit der Eigenschaft, dass $K_i/K$ rein inseperanel und $L/K_i$ separabel ist, weil $L/K$ normal. 
+        Da $L/K$ algberiasch ist, ist $\overline{L}$ ein algebraischer Abschluss von $K$ und wir erhalten 
+        \[
+        1 = [K_i:K]_s = \#\Hom_K(K_i,\overline{K}) = \#\Hom_K(K_i,\overline{L})    
+        \]
+        Daher git, dass $\Hom_K(K_i,\overline{L})=\{K_i\hookrightarrow \overline{L}\}$. Sei nun $\sigma\in \gal(L/K)$, dann betrachte man $\sigma\restr{K_i}:K_i\to L$. Da $K\subset K_i$ und indem wir $L\hookrightarrow \overline{L}$, wird $\sigma\restr{K_i}$ so zu einem Element von $\Hom_K(K_i,\overline{L})$, also ist $\sigma\restr{K_i}$ fortgesetzt nach $\overline{L}$ die natürliche Inklusion von $K_i$ nach $\overline{L}$, insbesondere ist $\sigma\restr{K_i}=\id_{K_i}$. \\
+        Ferner gilt, dass $\#\Aut_K(L)=[L:K]_s$, denn jeder $K$-Automorphismus von $L$ ist auf natürliche Weise ein $K$-Homomorphismus von $L\to \overline{L}$, was $\#\Aut_K(L)\le [L:K]_s$ zeigt. Wegen der Normalität von 
+        $L/K$ beschränkt sich aber jeder $K$-Homomorphismus von $L\to \overline{L}$ zu einem $K$-Automorphismus von $L$. Insbesondere liefern zwei verschiedene $K$-Homomorphismen von $L\to \overline{L}$ auch zwei verschiedene $K$-Automorphismen von $L$ und es gilt Gleichheit. Ferner gilt 
+        \[
+        \#\Aut_K(L) = [L:K]_s = [L:K_i]_s \underbrace{[K_i:K]_s}_{=1} = [L:K_i] = [L:K_i][K_i:K]\le [L:K]    
+        \] 
+        Es ist $[K_i:K]=1 \Leftrightarrow [L:K]_s = [L:K] \Leftrightarrow K=K_i \Leftrightarrow \#\Aut_K(L) = [L:K]$ und $[L:K]_s=[L:K]$ ist äquivalent dazu, dass $L/K$ separabel ist. Wir haben also, dass $L/K$ galoissch ist genau dann, wenn $\#\Aut_K(L)=[L:K]$. 
+    \end{proof}
+\end{document}

@@ -96,4 +96,24 @@
             \] was zu zeigen war.
         \end{proof}
     \end{lemma}
+    Sei nun $(X,\cali{E},\mu)$ ein Maßraum.
+    \begin{lemma}[Chebyshev'sche-Ungleichung]
+        Sei $f:X\to [0,\infty]$ messbar, dann gilt für $t\in (0,\infty)$, dass
+        \[
+        t\cdot \mu(\{x\in X: f(x)>t\}) \le \int_X f \ \D \mu    
+        \] 
+    \end{lemma}
+    Wir zeigen damit, dass für $f:X\to [0,\infty]$ messbar gilt
+    \[
+    \int_X f \ \D \mu < \infty \implies f<\infty \ \mu\text{-fast-überall}     
+    \]
+    Angenommen $f$ wäre nicht $\mu$-fast-überall endlich, dann gäbe es eine Menge $A\in \cali{E}$ mit $\mu(E)>0$ und $f(x)=\infty$ für alle $x\in E$. Dann wäre aber für alle $t>0$
+    \[
+    \mu(\{x\in X: f(x)\ge t\}) \ge \mu(E)    
+    \]
+    da für alle $x\in E$ gilt, $f(x)=\infty > t$. Also gilt für alle $n\in \N$, dass 
+    \[
+    n \cdot \mu(E) \le n\cdot\mu(\{x\in X: f(x)\ge n)\} \le \int_X f \ \D \mu    
+    \]
+    aber, da $\mu(E)$ konstant ist, gilt $n\cdot \mu(E) \to \infty$, wenn $n\to \infty$. Also kann $\int_X f\ \D \mu$ nicht endlich sein. Widerspruch.
 \end{document}
