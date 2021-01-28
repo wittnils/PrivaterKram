@@ -1,0 +1,149 @@
+Seien $p,q$ zwei verschiedene ungerade Primzahlen. Für zu $q$ teilerfremdes $a\in \Z$
+definieren wir das Legendre-Symbol durch
+\[
+\left(\frac{a}{q}\right) \coloneqq \begin{cases} 1, & \text{falls\ } a \mod q\in (\F_p^\times)^2 \\ -1, & \text{sonst}
+\end{cases}   
+\]
+\begin{enumerate}[(a)]
+    \item Wir zeigen, dass das Legendre multiplikativ ist, d.h. für $a,b\in \Z$ teilerfremd zu $q$ gilt 
+    $
+    \left(\frac{ab}{q}\right) = \left(\frac{a}{q}\right)\left(\frac{b}{q}\right)    
+    $
+    und zusätzlich 
+    \[
+    \left(\frac{-1}{q}\right) = (-1)^{\frac{q-1}{2}} = \begin{cases}
+        1, & \text{falls\ }q\equiv 1 \mod 4 \\
+        -1 & \text{falls\ } q\equiv 3 \mod 4
+    \end{cases}    
+    \]
+    \begin{proof}
+        Sei $q$ eine ungerade Primzahl. Nach Blatt 6 Aufgabe 3(c) gilt für $s\in \F_p^\times$, dass 
+        \[
+        s^{\frac{q-1}{2}} = \begin{cases}
+            1, & \text{falls } s\in (\F_q^\times)^2 \\
+            -1, & \text{falls } s\notin (\F_q^\times)^2 
+        \end{cases}    
+        \] 
+        Seien $a,b\in \Z$ zwei zu $q$ teilerfremde ganze Zahlen und $\overline{a},\overline{b}\in \F_p^\times$ deren Restklassen (da teilerfremd zu $q$ sind sie $\neq 0$).
+        Dann gilt 
+        \begin{align*}
+            \overline{ab}\in (\F_q^\times)^2 &\iff (\overline{ab})^{\frac{q-1}{2}} \iff \overline{a}^{\frac{q-1}{2}}\overline{b}^{\frac{p-1}{2}}=1 \\ &\iff (\overline{ab})^{\frac{q-1}{2}} \iff \overline{a}^{\frac{q-1}{2}},\overline{b}^{\frac{p-1}{2}} = \pm 1 \\ 
+            &\iff \overline{a}^{\frac{q-1}{2}},\overline{b}^{\frac{q-1}{2}}\in (\F_p^\times)^2 \ \text{oder} \ \overline{a}^{\frac{q-1}{2}},\overline{b}^{\frac{q-1}{2}}\notin (\F_p^\times)^2 \\
+            &\iff \left(\frac{a}{q}\right),\left(\frac{b}{q}\right)=1 \text{ oder } \left(\frac{a}{q}\right),\left(\frac{b}{q}\right) = -1
+        \end{align*} 
+        Analog sieht man, dass 
+        \[
+            \overline{ab}\notin (\F_q^\times)^2 \iff \left(\frac{a}{q}\right)=1,\left(\frac{b}{q}\right)=-1 \text{ oder } \left(\frac{a}{q}\right)=-1,\left(\frac{b}{q}\right) = 1
+        \]
+        Das liefert uns die Multiplikativität des Legendresymbols. Ferner gilt wieder nach Blatt 6 Aufgabe 3 (c), dass
+        \[
+        (-1)^{\frac{q-1}{2}} = \begin{cases}
+            1, & \text{falls } -1\in (\F_q^\times)^2 \\ 
+            -1, & \text{falls } -1 \notin (\F_q^\times)^2
+        \end{cases}     
+        \]
+        was nach Definition mit $\left(\frac{-1}{q}\right)$ übereinstimmt. Ist $q\equiv 1 \mod 4$, dann gibt es ein $k\in \Z$ mit $q = 4k+1$ und es gilt 
+        \[
+        (-1)^{\frac{q-1}{2}} = (-1)^\frac{4k+1-1}{2} = 1    
+        \]
+        und analog, falls $q\equiv 3 \mod 4$ existiert ein $l\in \Z$ mit $q=4k+3$ und es folgt
+        \[
+        (-1)^{\frac{q-1}{2}} = (-1)^\frac{4l+3-1}{2} = (-1)^\frac{2(2l+1)}{2} = -1 
+        \]
+        was zu zeigen war. 
+    \end{proof}
+    Sei nun $L$ der Zerfällungskörper von $f=X^p-1$ über $\F_q$ und $G=\gal(L/\F_q)$ und wir betten die Galoisgruppe $G$ 
+    wie immer (d.h. durch Wirkung auf den Nullstellen von $f$) via $G\hookrightarrow \mathfrak{S}_p$ ein.
+    \item Das Bild von $G$ in $\mathfrak{S}_p$ ist genau dann in $\mathfrak{A}_p$ enthalten, wenn 
+    \[
+    1 = (-1)^{\frac{p-1}{2}}(-1)^\frac{q-1}{2}\legendre{p}{q}
+    \] 
+    \begin{proof}
+        \glqq$\Rightarrow$\grqq: Nach Aufgabe 3(e) ist die Voraussetzung: Das Bild von $G$ in $\mathfrak{S}_p$ ist enthalten in $\mathfrak{A}_p$ äquivalent zu $\Delta_f\in (\F_q^\times)^2$. Nach dem Hinweis gilt mit $n=p, b=0, c=-1$, dass 
+        \[
+        \Delta_f = (-1)^\frac{p(p-1)}{2}((1-p)^{p-1}\cdot 0^p+p^p(-1)^{p-1}) =  (-1)^\frac{p(p-1)}{2}p^p(-1)^{p-1}\in (\F_q^\times)^2   
+        \]
+        da $p$ ungerade ist, ist $p-1$ gerade und wir haben 
+        \[
+        \Delta_f = (-1)^\frac{p(p-1)}{2}p^p = ((-1)^\frac{p-1}{2}p)^p\in (\F_q^\times)^2    
+        \]
+        Nach Definition und wegen der Multiplikativität des Legendresymbols gilt 
+        \begin{align*}
+            1 = \legendre{((-1)^\frac{p-1}{2}p)^p}{q} &= \legendre{p\cdot (-1)^\frac{p-1}{2}}{q}^p = \left(\legendre{p}{q}\cdot \legendre{-1}{q}^\frac{p-1}{2}\right)^p \\
+            &= \left( \legendre{p}{q} \cdot (-1)^{\frac{q-1}{2}\cdot\frac{p-1}{2}} \right)^p
+        \end{align*}
+        Der Ausdruck in der Klammer ist eine ganze Zahl, deren $p$-te Potenz eins ist. Da $p$ ungerade ist, tritt das dann und nur dann ein, wenn der Ausdruck selbst eins ist. Also ist 
+        \[
+        \legendre{p}{q}(-1)^{\frac{q-1}{2}\cdot\frac{p-1}{2}}=1
+        \]
+        womit wir die Hinrichtung gezeigt haben. \\
+        \glqq $\Leftarrow$\grqq: Wir zeigen, dass $\Delta_f\in (\F_q^\times)^2$, was äquivalent zu dem ist, was wir zeigen wollen nach A3(e). Es berechnet sich $\Delta_f$ nach dem Hinweis zu 
+        \[
+        \Delta_f = (-1)^\frac{p(p-1)}{2}p^p(-1)^{p-1} = ((-1)^\frac{p(p-1)}{2}p)^p    
+        \]
+        und indem wir die Umformungen von oben rückwärtsdurchlaufen erhalten wir, dass $\Delta_f\in (\F_q^\times)^2$, was zu zeigen war.
+    \end{proof}
+    Sei $\sigma\in G$ der $q$-Frobenius, d.h. $\sigma(x)=x^q$ für alle $x\in L$. Nach Wahl einer primitiven $p$-ten Einheitswurzel $\zeta_p$ identifizieren wir die Nullstellen
+    $\mu_p$ von $f$ mit $\Z/p\Z$ und die von $\sigma$ auf $\Z/p\Z$ induzierte Permutation $\pi$ ist gerade die Multiplikation mit $q$, d.h. $\pi(a)=qa$ für $a\in \Z/p\Z$. Sei $k\coloneqq \ord_{(\Z/p\Z)^\times}(q)$.
+    \item Es gilt $\sgn(\pi)=(-1)^{(k-1)\cdot \frac{p-1}{k}}$.
+    \begin{proof}
+        Da die Ordnung von $q$ in $(\Z/p\Z)^\times$ gerade $k$ ist, enthält $\pi$ den Zykel $\cycle{1,q,q^2,\cdots,q^{k-1}}$, weil $\pi(a)=qa$ für $a\in (\Z/p\Z)^\times$ nach der Vorbemerkung. Diesen Zykel schreiben wir als 
+        \[
+            \cycle{1,q,q^2,\cdots,q^{k-1}} = \cycle{1,q}\circ \cycle{q,q^2}\circ\cycle{q^2,q^3}\circ\cdots\circ\cycle{q^{k-2},q^{k-1}}
+        \]
+        also besteht der Zykel aus genau $k-1$ Transpostionen, daher ergibt sich für das Signum
+        \[
+        \sgn(\cycle{1,q,q^2,\cdots,q^{k-1}}) = \prod_{i=0}^{k-2} \sgn(\cycle{q^i,q^{i+1}}) = (-1)^{k-1}    
+        \]
+        Wegen dem Satz von Lagrange gibt es genau $\frac{\ord(\F_p^\times)}{\ord(q)} = \frac{p-1}{k}$ verschiedene Restklassen in $(\Z/p\Z)/\langle q\rangle$. Sei $n\coloneqq (p-1)/k$. Dann gibt es genau $n$ Restklassen $r_1\langle q\rangle,\ldots,r_n\langle q\rangle$ mit $r_1,\ldots,r_n\in \Z/p\Z$ einem Vertretersystem. 
+        Die Restklassen entsprechen genau Zykeln der Länge $k$, denn nach Definition ist $r_i\langle q\rangle =\{ r_iq^n \mid n=0,\ldots,k-1\}$ und das sind genau die Elemente im Zyklus $\cycle{r_i, r_i q, \cdots,r_iq^{k-1}}$ die $r_i$ liegen in verschiedenen Zyklen, weil die Restklassen disjunkt sind. Weil $\Z/p\Z$ disjunkt in die Restklassen modulu $q$ zerfällt liegt auch jedes Element von $\Z/p\Z$ in einer Restklasse, d.h. in einem Zyklus. $\pi$ ist also die Komposition von $\frac{p-1}{k}$ Zyklen der Länge $k-1$. Da $\sgn:\mathfrak{S}_p\to \{\pm 1\}$ ein Gruppenhomomorphismus ist, folgt die Behauptung.
+    \end{proof}
+    \item Folgern Sie aus (c), dass das Bild von $G$ in $\mathfrak{S}_p$ genau dann in $\mathfrak{A}_p$ enthalten ist, wenn 
+    \[
+        1 = \legendre{q}{p}
+    \] und folgern sie dann das quadratische Reziprozitätsgesetz.
+    \begin{proof}
+        Wir wissen, dass $G=\langle \sigma\rangle$, wobei $\sigma\in G$ der $q$-Frobenius ist. Dann ist das Bild von $G$ in $\mathfrak{S}_p$ in $\mathfrak{A}_p$ enthalten genau dann, wenn das Bild von $\sigma$, also $\pi$ in $\mathfrak{S}_n$ in $\mathfrak{A}_n$ enthalten ist, d.h. genau dann, wenn $\sgn(\pi)=1$. \\
+        Nach (c) gilt dann 
+        \begin{align*}
+            \pi \in \mathfrak{A}_p &\iff \sgn(\pi) = 1 \iff (-1)^{(k-1)\cdot \frac{p-1}{k}} = 1 \\ &\iff (k-1)\cdot \frac{p-1}{k} \ \text{gerade} \iff k\cdot \frac{p-1}{k}-\frac{p-1}{k} \ \text{gerade}
+            \\ &\iff \frac{p-1}{k} \ \text{gerade}
+        \end{align*}
+        die letzte Äquivalenz gilt, weil $p-1$ gerade ist. Dann existiert ein $s\in \Z$ mit 
+        \[
+        \frac{p-1}{k} = 2s \iff ks = \frac{p-1}{2} \implies q^\frac{p-1}{2} -1 = (q^k)^s - 1 = 0     
+        \]
+        also ist $q$ eine Nullstelle von $X^\frac{p-1}{2}-1\in \F_p[X]$, was äquivalent dazu ist, dass $q\in (\F_p^\times)^2$. Ist andererseits $q$ eine Nullstelle von $X^\frac{p-1}{2}-1$, dann $k=\ord_{(\Z/p\Z)^\times}(q)\mid \frac{p-1}{2}$, denn: angenommen das wäre nicht der Fall, dann gäbe es $s,r\in \Z$ mit $0<r<k$ und 
+        \[
+        \frac{p-1}{2} = s\cdot k + r \implies 1 = q^\frac{p-1}{2} = (q^k)^s\cdot q^r = q^r    
+        \]
+        da $r<k$ und $k$ die Ordnung von $q$ ist, ist das ein Widerspruch. Also teilt $k$ doch $\frac{p-1}{2}$. Also ist $q$ ein Quadrat in $(\F_p)^\times$ genau dann, wenn $k\mid (p-1)/2$. Dann können wir aber die obigen Äquivalenzen auch rückwärtsdurchlaufen und erhalten, dass $q\in (\F_p^\times)^2$ genau dann, wenn $\pi \in \mathfrak{A}_p$ genau dann, wenn das Bild von $G$ in $\mathfrak{S}_p$ in $\mathfrak{A}_p$ enthalten ist. \\
+        Zusammen mit Teil (b) haben wir die folgenden Äquivalenzen
+        \begin{align*}
+            &\text{Bild von }G\text{ in } \mathfrak{S}_p \text{ in }\mathfrak{A}_p \text{ enthalten} \iff \\      
+            &1 = \legendre{p}{q}\cdot (-1)^{\frac{p-1}{2}\frac{q-1}{2}} \iff \legendre{q}{p} = 1
+        \end{align*}
+        Nach Teil (a) erhalten wir 
+        \[
+        (-1)^{\frac{q-1}{2}\frac{p-1}{2}} = \left((-1)^\frac{q-1}{2}\right)^\frac{p-1}{2} = \begin{cases}
+            -1, & \text{falls } \frac{p-1}{2},\frac{q-1}{2}\notin 2\Z \Leftrightarrow q,p\equiv 3 \mod 4 \\
+            1 & \text{sonst} 
+        \end{cases}    
+        \]
+        Und es gilt weil das Produkt von $\legendre{p}{q}$ und $(-1)^{\frac{q-1}{2}\frac{p-1}{2}}$ gerade eins sein muss, dass 
+        \[
+        \legendre{p}{q} = \begin{cases}
+            -1, & p,q\equiv 3 \mod 4 \\
+            1, & \text{sonst}
+        \end{cases}    
+        \]
+        und das ist genau dann der Fall, wenn $\legendre{q}{p} = 1$. Insgesamt erhalten damit, dass
+        \[
+        \legendre{q}{p}\legendre{p}{q} = \begin{cases}
+            -1, & p,q\equiv 3 \mod 4 \\
+            1, & \text{sonst}
+        \end{cases}   
+        \] 
+        was gerade die Aussage des quadratischen Reziprozitätsgesetzes ist.
+    \end{proof}
+\end{enumerate}

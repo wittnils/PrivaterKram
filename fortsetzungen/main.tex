@@ -59,4 +59,15 @@
         \] 
         Es ist $[K_i:K]=1 \Leftrightarrow [L:K]_s = [L:K] \Leftrightarrow K=K_i \Leftrightarrow \#\Aut_K(L) = [L:K]$ und $[L:K]_s=[L:K]$ ist äquivalent dazu, dass $L/K$ separabel ist. Wir haben also, dass $L/K$ galoissch ist genau dann, wenn $\#\Aut_K(L)=[L:K]$. 
     \end{proof}
+\begin{prop}
+    Sei $L/K$ galoissch und $L/E/K$ ein Zwischenkörper. Dann sind äquivalent:
+    \begin{enumerate}[(i)]
+        \item $E/K$ ist normal.
+        \item Für alle $\sigma\in \gal(L/K)$ gilt $\sigma(E)=E$.
+    \end{enumerate} 
+\end{prop}
+\begin{proof}
+    (i) $\Rightarrow$ (ii): Sei $\sigma\in \gal(L/K)$. Sei $a\in E$ beliebig und sei $\{a_1,\ldots,a_n\}\subset L$ die Menge der Nullstellen des Minimalpolynoms $f\in K[X]$ von $a$, wobei wir $a_1\coloneqq a$ definiert haben. $f$ hat eine Nullstelle $a\in E$. Da $E/K$ normal ist, zerfällt $f$ über $E$ vollständig. Also gilt $\{a_1,\ldots,a_n\}\subset E$. Jedes $\sigma\in\gal(L/K)$ permutiert die Menge $\{a_1,\ldots,a_n\}$ das heißt es gibt ein $a_j$ mit $j\in\{1,\ldots,n\}$ mit $\sigma(a_j)=a_1=a$ und es gilt $\sigma(a)=a_k$ für ein $k\in \{1,\ldots,n\}$. Die erste Aussage liefert $\sigma(E)\subset E$ und die zweite $E\subset \sigma(E)$.    
+    \\(ii) $\Rightarrow$ (i): Sei also $f\in K[X]$ irreduzbel und habe eine Nullstelle $a\in E$. Dann gibt es zu jeder weiteren Nullstelle $\beta\in L$ eine Fortsetzung $\sigma:K(a)\to K(\beta)$ (da $L/K$ normal ist und $a\in E\subset L$ liegen alle Nullstellen von $f$ in $L$) von der Inklusion $K\to K(\beta)$ mit $\sigma(a)=\beta$. $\sigma$ setzt sich zu einem $K$-Homomorphismus $K(a)\to \overline{L}$ fort und nach 3.41 und da $L/K(\beta)$ algebraisch ist, setzt sich $\sigma$ eindeutig zu einem $K$-Homomorphismus $L\to\overline{L}$ fort, der sich aufgrund der Normalität von $L/K$ zu einem $K$-Automorphismus $\tau\in\gal(L/K)$ beschränkt. Für dieses $\tau$ gilt dann $\tau\restr{K(a)}=\sigma$ und insbesondere $\tau(a)=\beta$. Nun gilt (ii) und es folgt $\beta=\tau(a)\in E$. Da $\beta$ beliebig war, liegen alle Nullstellen von $f$ in $E$. Was zu zeigen war. 
+\end{proof}
 \end{document}
