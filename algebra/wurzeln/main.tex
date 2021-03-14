@@ -1,0 +1,55 @@
+\documentclass{scrartcl}
+\usepackage{microtype}
+\usepackage{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\input{mathpkg.tex}
+% header and footer with scrlayer-scrpage
+\usepackage{scrlayer-scrpage}
+\usepackage{fleqn}
+\usepackage{xcolor}
+
+\lohead*{Algebra 1}
+\cohead*{}
+\rohead*{Nils Witt}
+\cofoot*{}
+\lofoot*{Seite \thepage}
+\pagestyle{scrheadings}
+\title{Quizaufgabem}
+\date{Wintersemester 2020}
+\author{Nils Witt}
+\setlength\parindent{0pt}
+
+\begin{document}
+\maketitle
+\textbf{Aufgabe 1.} Sei $k$ ein Körper, $f=X^n-a\in k[X]$ mit $a\neq 0$, dann gilt
+\begin{enumerate}[(i)]
+    \item $f$ separabel genau dann, wenn $\operatorname{char}(k)\nmid n$
+    \item Sind $\alpha,\beta$ Nullstellen von $f$, dann ist $\alpha/\beta$ eine $n$-te Einheitswurzel
+\end{enumerate}
+\begin{proof}
+    (i): Es gilt $X^n-1\in k[X]$ separabel genau dann, wenn $\operatorname{char}(k)\nmid n$ und falls $X^n-1$ separabel, dann sind die Nullstellen von $f$ gerade $\zeta_n^i\sqrt[n]{a}\in \overline{k}$ für $i=0,\ldots,n-1$ mit einer primitiven $n$-ten Einheitswurzel $\zeta_n$.  
+    Diese sind dann paarweise verschieden. Angenommen $\operatorname{char}(k)\mid n$, dann sind die Merhfachnullstellen von $f$ gerade die gemeinsamen Nullstellen von $f$ und $f'=nX^{n-1}=0$, das sind aber alle Nullstellen von $f$, also ist $f$ nicht separabel.
+    (ii): Seien $\alpha,\beta$ Nullstellen von $X^n-a$, dann gilt 
+    \[
+    \left(\frac{\alpha}{\beta}\right)^n-1=\frac{\alpha^n}{\beta^n}-1=\frac{a}{a}-1=0    
+    \]
+\end{proof}
+\textbf{Aufgabe 2.} Es gilt $[\Q(\sqrt[4]{6})/\Q(\sqrt{6})]=2$. 
+\begin{proof}
+    $\sqrt[4]{6}$ ist Nullstelle von $X^2-\sqrt{6}\in \Q(\sqrt{6}))[X]$, wäre $\sqrt[4]{6}\in \Q(\sqrt{6})$, dann gäbe es eine Darstellung mit $a,b\in \Q$, s.d.
+    \[
+        (a+b\sqrt{6})^2-\sqrt{6} = a^2+\sqrt{6}(2ab-1)+6b^2 = 0
+    \] 
+    gilt $2ab-1\neq 0$, dann können wir alles umschaffen und erhalten $\sqrt{6}\in \Q$. Widerpsruch. Wenn $2ab-1=0$, dann ist $a^2+6b^2=0$ und daher $a^2=-6b^2$, aber es ist $a^2,b^2\ge 0$, also Widerpsruch.
+\end{proof}
+\textbf{Aufgabe 3.} Behauptung: Die Körpererweiterungen $\Q(\sqrt[6]{2},\sqrt{18})/\Q,\Q(\sqrt[3]{2},e^{2\pi i/3})/\Q$ und $\Q(\sqrt{2+\sqrt[3]{2}})$ sind alle vom Grad 6.
+\begin{proof}
+    \begin{enumerate}[(i)]
+        \item Es ist $[\Q(\sqrt[6]{2}):\Q]=6$ (betrachte: $X^6-2\in \Q[X]$ + Eisenstein) und wegen $\sqrt{18}=3\sqrt{2}$ und $(\sqrt[6]{2})^3=\sqrt{2}$ folgt die Behauptung.
+        \item Es ist $[\Q(\sqrt[3]{2}):\Q]=3$ und $\Q(\sqrt[3]{2})\subsetneqq \R$ und $X^2+X+1\in \Q[X]$ ist das Mipo von $e^{2\pi i/3}$ über $\Q$ und alle Nullstellen davon sind komplex, daher $[\Q(e^{2\pi i/3},\sqrt[3]{2}):\Q(\sqrt[3]{2})]=2$. Gradsatz liefert Behauptung.
+        \item $[\Q(\sqrt[3]{2}):\Q]=3$ und $(\sqrt{2+\sqrt[3]{2}})^2 - (2+\sqrt[3]{2})=0$.
+    \end{enumerate}
+\end{proof}
+\end{document}

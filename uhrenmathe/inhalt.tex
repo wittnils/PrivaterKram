@@ -1,0 +1,62 @@
+Ziel ist es \glqq Uhrenmathematik\grqq{} zu verstehen. Das heißt, 
+dass Addition von Zahlen wie auf einer Uhr funktionieren soll, etwa soll $11+2=1$. Dabei ist nicht klar erstmal,
+wie man das mathematisch sinnvoll bewerkstelligen soll, weil offenbar in den \glqq normalen\grqq{} Zahlen diese Gleichung einfach nicht stimmt.
+\subsection*{Naiver Ansatz}
+Ganz pragmatisch kann man die Aufgabe so lösen. Wir betrachten die Menge $X\coloneqq \{1,\ldots,n\}$ der Zahlen von $1$ bis $n$, wobei $n$ irgendeine ganze Zahl größer gleich eins sei.
+Die Notation $\{a,b\}$ bezeichnet einfach die Menge, die die Elemente $a$ und $b$ enthält. Jedes Element kommt in einer Menge
+höchstens einmal vor und zwei Mengen heißen gleich, wenn sie dieselben Elemente enthalten.
+\\ Eine Menge trägt erstmal keine Struktur. Wir müssen nun sagen, was es heißt, zwei Zahlen zu addieren (allgemeiner: zu verknüpfen). 
+Unser Ziel ist es schlussendlich die Menge $X$ als die Ziffern einer Uhr mit $n$ Stunden zu verstehen, also als gäbe es an einem Tag $n$ Stunden. 
+Nun Wollen wir Addition von Uhrzeiten auf unserer Spezialuhr einführen. A priori ist nicht klar, wie das passieren soll. Wir wollen die Situation, die bei einer normalen Uhr vorliegt, möglichst natürlich verallgemeinern. \\
+Schauen wir auf die normale Uhr, fällt folgendes auf: Wenn wir zwei Uhrzeiten addieren, dann passiert nur etwas besonderes, wenn die Summe $\ge 12$ ist, dann ziehen wir von der Summe immer $12$ ab, wir rechnen also die Summe der beiden Zahlen aus und rechnen den Rest der Summe bei Divison durch $12$ aus. 
+So wollen wir es jetzt auch allgemein machen. Dazu brauchen wir etwas Notation. Seien $a,b\in \Z$ (so schreibt man: $a,b$ sind ganze Zahlen) und $n\in \Z$ mit $n>0$, wir schreiben $a\equiv b \mod n$, falls $b-a$ durch $n$ teilbar ist, das liest man: $a$ ist kongruent zu $b$ modulo $n$. \\
+Auf einer normalen Uhr ist $11+3=2$ genauso ist $11+3=14\equiv 2 \mod 12$ und das lässt sich offenbar immer weiter fortführen für jede Uhrzeit. Ein Gewinn dieser Sichtweise ist schonmal, dass man auch sinnvoll, darüber reden kann, was $50$ Uhr sein soll, denn $50\equiv 2 \mod 12$. Und so kann man dann auch etwa sinnvoll sagen: $12\equiv 0$, was nichts anderes sagt, als, dass $12$ gleich $0$ ist. 
+Man definiert dann die Addition zweier Uhrzeiten als: Man nehme zwei Uhrzeiten, betrachte deren Rest bei Division durch $n$ und addiere diese Reste und bilde erneut den Rest bei Division durch $n$. 
+\subsection*{Etwas Mathematik}
+Wie wir die Addition gewonne haben, war im Wesentlichen: Wir addieren die ganzen Zahlen, wie wir halt immer ganze Zahlen addieren und bilden dann den Rest. Das ist kein Zufall, sondern lässt sich ganz allgemein machen. Das soll noch etwas erkundet werden. 
+Dazu definieren wir 
+\begin{defn}[Menge -- Cantor]
+    Unter einer ‚Menge‘ verstehen wir jede Zusammenfassung M von bestimmten wohlunterschiedenen Objekten m unserer Anschauung oder unseres Denkens (welche die ‚Elemente‘ von M genannt werden) zu einem Ganzen.
+\end{defn}
+\begin{defn}[Abbildung]
+    Seien $M,N$ zwei Mengen, eine Zuordnung, die jedem Element von $M$ genau ein Element von $N$ zuordnet, nennt man Abbildung. Notation: $f:M\to N$. Das Bild von $m$ unter der Zuordnung $f$ bezeichnen wir mit $f(m)$.
+    Seien $M,N$ zwei Mengen, die Menge $M\times N$ bezeichnet die Menge der Tupel $(m,n)$, wobei $m\in M$ und $n\in N$, also $M\times N = \{(m,n):m\in M, n\in N\}$, wobei ein Tupel ein geordnetes Pärchen von zwei Elementen ist.
+\end{defn}
+\begin{defn}[Gruppe]
+    Eine Gruppe ist ein Tripel $(G,*,e)$ bestehend aus einer Menge $G$ zusammen mit einer Abbildung $*:G\times G\to G$, wobei wir statt $*(g,h)$ auch $g*h$ oder nur $gh$ für Elemente $g,h\in G$ schreiben, und einem sogenannten neutralen Element $e$ die folgende Bedingungen erfüllt:
+    \begin{enumerate}[(i)]
+        \item Es gibt ein Element $e\in G$ mit $e*g=g$ für alle $g\in G$.
+        \item Es gilt $g*(h*k)=(g*h)*k$ für alle $g,h,k\in G$.
+        \item Für alle $g\in G$ gibt es ein $h\in G$ mit $gh=e$. Man schreibt auch $h=g^{-1}$ und nennt $h$ das Inverse von $g$ bezüglich $*$.
+    \end{enumerate}
+\end{defn}
+Das Inverse in (iii) erfüllt auch $hg=e$, denn 
+\[
+    hg=h(gh)g=(hg)(hg) 
+\]
+nun gibt es ein Inverses zu $hg$, nämlich $(hg)^{-1}$ mit dem Multiplizieren wir beide Seiten der Gleichung und erhalten
+\[
+hg=h(gh)g=(hg)(hg)\implies e=hg (hg)^{-1} = hg((hg)(hg)^{-1})=hg     
+\]
+also $e=hg$, was wir zeigen wollten. Man kann noch zeigen, dass das Inverse in (iii) eindeutig bestimmt ist. Grund: $g\in G$ und $h,k\in G$ mit $gh=gk=e$, dann durch Multiplizieren der Gleichung mit $h$ von beiden Seiten $hgh=(hg)h=eh=h=hgk=(hg)k=k$, also $h=k$.
+\begin{defn}[Untergruppe]
+    Sei $(G,*,e)$ eine Gruppe, $H$ heißt eine Untergruppe von $G$, wenn 
+    \begin{enumerate}[(i)]
+        \item Jedes Element von $H$ ist ein Element von $G$, wir schreiben auch $H\subset G$, wenn für alle $x\in H$ gilt $x\in G$.
+        Dann nennen wir auch im allgemeiner $N$ Teilmenge einer Menge $M$, wenn $x\in N\implies x\in M$ für alle $n\in N$.
+        \item $e\in H$
+        \item Für alle $g,h\in H$ gilt $g*h\in H$.
+        \item Für alle $g\in H$ gilt $g^{-1}\in H$.
+    \end{enumerate}
+\end{defn}
+\begin{defn}[Nebenklassen]
+    Sei $G$ eine Gruppe, $H$ eine Untergruppe und $g\in G$, dann nennen wir die Menge $\{g*h : h\in H\}\subset G$ die Linksnebenklasse von $g$ bezüglich $H$, wobei das heißen soll: die Menge der Produkte $g*h$, wobei $h\in H$ beliebig und $g\in G$ fest ist, also die Menge der Elemente der Form $g*h$, wobei $h\in H$.\\
+    Für $\{g*h:h\in H\}$ schreiben wir auch kompakt $gH$. Die Menge der Linksnebenklassen bezeichen wir mit $G/H$, also: $G/H =\{ gH : g\in G\}$. 
+\end{defn}
+Nun stellt sich natürlich die Frage: wie können wir die Gruppenstruktur von $G$ auf die Menge $G/H$ übertragen, beziehungsweise, können wir das überhaupt. Die Antwort im Allgemeinen ist: leider nein.
+Aber unter bestimmten Voraussetzungen geht es schon. Wir brauchen, dass $gH = \{ g*h : h\in H\}=\{ h * g : h\in H\} = Hg$ für alle $g\in G$. Den Ausdruck $Hg$ nennen wir auch Rechtsnebenklassen. 
+Dann können wir auch $G/H$ zu einer Gruppe werden lassen, vermöge der Verknüpfung: 
+\[
+\phi:G/H\times G/H\to G/H, \ \phi(gH,g'H) = (g*g')H     
+\]
+Wenn wir die Gruppe $(\Z,+,0)$ mit der Untergruppe $n\Z$ für $n>1$ betrachten, erhalten wir genau die Konstruktion von oben. 

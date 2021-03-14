@@ -1,0 +1,33 @@
+\documentclass{scrartcl}
+\usepackage{microtype}
+\usepackage{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\input{mathpkg.tex}
+% header and footer with scrlayer-scrpage
+\usepackage{scrlayer-scrpage}
+\usepackage{fleqn}
+\usepackage{xcolor}
+
+\lohead*{Analysis 1}
+\cohead*{}
+\rohead*{WS 2020/21}
+\cofoot*{}
+\lofoot*{Seite \thepage}
+\pagestyle{scrheadings}
+\title{Analysis 1 -- Übungsafugaben}
+\date{Wintersemester 2020/21}
+\author{}
+\setlength\parindent{0pt}
+
+\begin{document}
+\maketitle
+    \section*{Zusammenhängende Räume} 
+    \begin{defn}[Lokal konstante Funktionen]
+        Sei $f:\R^n\to \R$. Dann heißt $f$ lokal konstant, wenn für alle $x\in \R$ ein $\delta >0$ existiert mit $\vert x-y\vert<\delta \Rightarrow f(x)=f(y)$.   
+    \end{defn}
+    \begin{uea} Man zeige, dass jede lokal konstante Funktion stetig ist.
+    \end{uea}
+    
+\end{document}

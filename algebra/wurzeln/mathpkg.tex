@@ -1,0 +1,76 @@
+% Standard-Packages
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amssymb}
+\usepackage[fleqn]{amsmath}
+\usepackage{amsfonts}
+\usepackage{enumerate}
+\usepackage{microtype}
+\usepackage{extpfeil}
+\usepackage{ngerman}
+\usepackage{gauss}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+
+\usepackage{listofitems}
+\newcommand\cycle[2][\,]{%
+  \readlist\thecycle{#2}%
+  (\foreachitem\i\in\thecycle{\ifnum\icnt=1\else#1\fi\i})%
+}
+
+% amsthm-Formatierung und Änderungen
+\usepackage{amsthm}
+\theoremstyle{plain}
+\newtheorem{kor}{Korrollar}
+\newtheorem{satz}{Satz}
+\newtheorem{lemma}{Lemma}
+\renewcommand*{\proofname}{Beweis}
+\theoremstyle{remark}
+\newtheorem*{bem}{\textbf{Bemerkung}}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem*{defnstar}{Definition}
+
+\usepackage{dsfont}
+\renewcommand{\mathbb}{\mathds}
+% Lineare Algebra 
+\newcommand{\spur}{\operatorname{Sp}}
+\newcommand{\ann}{\operatorname{Ann}}
+\newcommand{\charPol}[1]{\chi_{#1}^\text{char}}
+\newcommand{\minPol}[1]{\chi_{#1}^\text{min}}
+\newcommand{\Hom}[1]{\mathrm{Hom}_{#1}}
+\newcommand{\End}[1]{\mathrm{End}_{#1}}
+\newcommand{\Xmeas}{(X,\mathscr{E},\mu)}
+\newcommand{\Ymeas}{(X,\mathscr{F},\nu)}
+\newcommand{\legendre}[2]{\left(\frac{#1}{#2}\right)}
+\DeclareMathOperator{\kgV}{kgV}
+\DeclareMathOperator{\ggT}{ggT}
+\DeclareMathOperator{\GGT}{GGT}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\rg}{Rang}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Lin}{Lin}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\esssup}{\operatorname{ess \ sup}}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\gal}{Gal}
+\DeclareMathOperator{\ord}{ord}
+
+% Zahlenmengen
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\F}{\mathbb{F}}
+
+% Formatierung & Sonstiges 
+\newcommand{\D}{\mathrm{d}}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\epsilon}{\varepsilon}
+
+\newcommand{\cali}[1]{\mathscr{#1}}

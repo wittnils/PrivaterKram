@@ -1,0 +1,27 @@
+\documentclass{scrartcl}
+\usepackage{microtype}
+\usepackage{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\input{mathpkg.tex}
+% header and footer with scrlayer-scrpage
+\usepackage{scrlayer-scrpage}
+\usepackage{fleqn}
+\usepackage{xcolor}
+
+\lohead*{Uhrenmathematik}
+\cohead*{}
+\rohead*{}
+\cofoot*{}
+\lofoot*{Seite \thepage}
+\pagestyle{scrheadings}
+\title{Uhrenmathematik}
+\date{}
+\author{}
+\setlength\parindent{0pt}
+
+\begin{document}
+\maketitle
+\input{inhalt.tex}
+\end{document}

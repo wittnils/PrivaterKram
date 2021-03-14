@@ -1,0 +1,35 @@
+Es gilt, dass $\Q(\sqrt{5},i)$ Zerfällungskörper von $f$ ist, denn es gilt über $\C$, dass
+\[
+f=(X^4-1)(X^2-5)=(X-1)(X+1)(X-i)(X+i)(X-\sqrt{5})(X+\sqrt{5})    
+\]
+und es gilt $\Q(\pm\sqrt{5},\pm i)=\Q(\sqrt{5},i)$. Als Zerfällungskörper eines separablen Polynoms ist $L\coloneqq \Q(\sqrt{2},i)/\Q$ insbesondere galoissch. \\ 
+Nun hat $X^2+1\in \Q(\sqrt{5})[X]$ nur rein-imaginäre Nullstellen und $\Q(\sqrt{5})\subset \R$, also hat $X^2+1$ keine Nullstelle in $\Q(\sqrt{5})$, ist also irreduzibel über $\Q(\sqrt{5})$. Wir wenden nun Lemma 3.40 zweimal an: Zu jeder Nullstelle $\pm \sqrt{5}$ von $X^2-5$ gibt es genau eine Fortsetzung $\sigma$ von $\id_\Q$ nach $\Q(\sqrt{5})$ mit $\sigma(\sqrt{5})=\pm \sqrt{5}$ und $\restr{\sigma}{\Q}=\id_\Q$. Nun 
+ist $X^2+1$ über $\Q(\sqrt{5})$ irreduzibel und somit gibt es zu jeder Nullstelle $\pm i$ von $X^2+1$ genau eine Fortsetzung $\tau$ von $\sigma$ nach $\Q(\sqrt{5})(i)$ mit $\tau(i)=\pm i$ und $\restr{\tau}{\Q(\sqrt{5})}=\sigma$. \\
+Somit haben wir die Galoisgruppe bestimmt:
+\begin{align*}
+    &\sigma_1: \sqrt{5}\mapsto \sqrt{5}, i\mapsto i && \sigma_2: \sqrt{5}\mapsto -\sqrt{5}, i \mapsto i \\
+    &\sigma_3: \sqrt{5}\mapsto \sqrt{5}, i\mapsto -i && \sigma_4:\sqrt{5}\mapsto -\sqrt{5}, i \mapsto -i
+\end{align*}
+da alle Elemente $\neq \id_L=\sigma_1$ Ordnung zwei haben und es nur zwei Gruppen der Ordnung vier gibt, wissen wir zudem $G\simeq \Z/2\Z\times \Z/2\Z$. \\
+$G\simeq \Z/2\Z\times \Z/2\Z$ hat drei Untergruppen der Ordnung zwei, die wegen $\#G=4$ Index zwei haben, demnach gibt es nach dem Hauptsatz der Galoistheorie drei Zwischenkörper, die quadratisch über $\Q$ sind. 
+\begin{enumerate}[(i)]
+    \item $L^{\langle \sigma_2\rangle}=\Q(i)$, denn $\sigma_2(i)=i$, also $\Q(i)\subset L^{\langle \sigma_2\rangle}$, aber auch 
+    \[
+        [L^{\langle \sigma_2\rangle}:\Q]=\frac{[L:\Q]}{[L:L^{\langle \sigma_2\rangle}]}=\frac{4}{\#\langle \sigma_2\rangle}=2    
+    \] 
+    Gradsatz liefert dann wegen $[\Q(i):\Q]=2$, dass $\Q(i)=L^{\langle \sigma_2\rangle}$.
+    \item $L^{\langle \sigma_3\rangle}=\Q(\sqrt{5})$, denn: $\sigma_3(\sqrt{5})=\sqrt{5}$, also $\Q(\sqrt{5})\subset L^{\langle \sigma_3\rangle}$ mit demselben Gradargument wie in (i) folgt dann, dass $\Q(\sqrt{5})=L^{\langle \sigma_3\rangle}$.
+    \item $L^{\langle \sigma_4\rangle}=\Q(i\sqrt{5})$, denn: $\sigma_4(i\sqrt{5})=\sigma_4(i)\sigma_4(\sqrt{5})=-i\cdot (-\sqrt{5})=i\sqrt{5}$. Demnach gilt: $\Q(i\sqrt{5})\subset L^{\langle \sigma_4\rangle}$, das das Polynom $X^2+5\in \Q[X]$ irreduzibel ist (Eisenstein mit $p=5$) und $i\sqrt{5}$ als Nullstelle hat, folgt, dass $[\Q(i\sqrt{5}):\Q]=2$, also mit demselben Gradargument gilt $L^{\langle \sigma_4\rangle}=\Q(i\sqrt{5})$.
+    \item $L^{\{\id_L\}}=L$ und $L^G = \Q$
+\end{enumerate} 
+Wir bestimmen noch ein primitives Element der Körpererweiterung. Behauptung: $\Q(\sqrt{5},i)=\Q(\sqrt{5}+i)$, dafür genügt es, nachzuweisen, dass $\sigma_i(\sqrt{5}+i)\neq \sqrt{5}+i$ für $\sigma_i\neq \id_L$, denn dann ist $\operatorname{Gal}(L/\Q(i+\sqrt{5}))=\{\id_L\}$, weil die $\sigma_i$ für $i=2,3,4$, dann auf jeden Fall auch nicht $\sqrt{5}+i$ fest lassen, also insbesondere nicht $\Q(i+\sqrt{5})$, nun gilt 
+\[
+\sigma_2(\sqrt{5}+i) = -\sqrt{5}+i, \quad \sigma_3(\sqrt{5}+i)=-i+\sqrt{5}, \quad \sigma_4(\sqrt{5}+i)=-(\sqrt{5}+i)    
+\]. Daher gilt $Q(i,\sqrt{5})=\Q(i+\sqrt{5})$. Wir erhalten also das folgende Körperdiagramm
+\begin{center}
+    \begin{tikzcd}[arrows=dash]
+        &\Q(i+\sqrt{5}) \arrow[rd] \arrow[ld] \arrow[d]& \\
+        \Q(\sqrt{5})\arrow[dr] & \Q(i)\arrow[d] & \Q(i\sqrt{5})\arrow[dl] \\
+        & \Q & 
+    \end{tikzcd}    
+\end{center}

@@ -1,0 +1,50 @@
+Es sei $f=X^4+2X^2+2\in \F_3[X]$. Man bestimme einen Zerfällungskörper 
+$L$ von $f$ über $\F_3$ sowie die Galoisgruppe und alle Zwischenlörper.
+\begin{proof}
+    Wir zeigen zuerst, dass $f$ irreduzibel ist. Dazu beobachten wir zwei Dinge 
+    \begin{enumerate}[(i)]
+        \item $f$ hat keine Nullstelle in $\F_3$, denn 
+        \begin{align*}
+            f(0) &= 0^4+2\cdot 0^2 + 2 = 2 \neq 0 \\
+            f(1) &= 1+2+2 = 5 = 2 \neq 0 \\
+            f(2) &= 2^4+2^3+2 = 16+8+2 = 26 = 2\neq 0
+        \end{align*}
+        daher kann $f$ nicht in einen linearen Faktor und ein kubisches Polynom zerfallen. 
+        \item $f$ hat keine Faktorisierung in quadratische Polynome. Angenommen, das wäre so, dann gäbe es $X^2+a_1X+b_1, X^2+a_2X+b_2\in \F_3[X]$ mit 
+        \begin{align*}
+            f &= X^4+2X^2+2 = (X^2+aX+b)(X^2+cX+d) \\
+              &= X^4 +(a_1+a_2)X^3 + (b_2+a_1a_2+b_1)X^2 + (a_1b_2+a_2b_1)X + b_1b_2     
+        \end{align*}
+        Daraus folgt mit Koeffizientenvergleich
+        \begin{align*}
+            a_1 + a_2 &= 0 \implies a_1 = -a_2 \tag{1}\\
+            b_2+a_1a_2+b_1 &= 2 \\
+            a_1b_2 + a_2b_1 &= 0 \overset{(1)}{\implies} a_2(b_1-b_2) = 0 \tag{2}\\
+            b_1b_2 &= 2
+        \end{align*}
+        Aus (2) folgt $a_2=0$ oder $b_1-b_2=0$. Angenommen $a_2 = 0$. Dann ist $b_1+b_2=2$ und $b_1b_2=2$. $b_1,b_2\neq 0$, weil $b_1b_2\neq 0$. Ist $b_1 = 1$, dann muss $b_2 = 2-1=1$, dann ist aber $b_1b_2=1\neq 2$. Analog für $b_2=1$. Ist $b_1=2$, so ist $b_2=0$, also $b_1b_2 = 0\neq 2$. Analog, falls $b_2=2$. Also 
+        ist $a_2\neq 0$ und $b_1=b_2$. Dann gilt aber $b_1b_2 = b_1^2=2$. Aber für $0^2,1^2,2^2\neq 2$ also gibt es kein Element in $\F_3$ dessen Quadrat $2$ ist. Also muss $f$ irreduzibel sein.
+    \end{enumerate}
+    Sei nun $\alpha\in\overline{\F}_3$ eine Nullstelle von $f$. Behauptung: Die Nullstellen von $f$ sind dann gerade $\{\pm\alpha, \pm\sqrt{2}/\alpha\}$, wobei $\sqrt{2}$ wieder eine Nullstelle von $X^2-2\in \F_3[X]$ in $\overline{\F}_3$ meint. \\
+    Tasächlich: $f(-\alpha)=0$, denn in $f$ hat nur gerade Potenzen von $X$. Und es gilt 
+    \[
+    f(\frac{\sqrt{2}}{\alpha}) = \frac{4}{\alpha^4} + 2\cdot \frac{2}{\alpha^2} + 2 = \frac{2\cdot (\alpha^4+2\alpha^2+2)}{\alpha^4} = 0   
+    \]
+    und für $-\sqrt{2}/\alpha$ wieder weil nur gerade Potenzen von $X$ in $f$ vorkommen. Behauptung: Es gilt $\sqrt{2}\in \F_3(\alpha)$. Denn es gilt 
+    \[
+    (\alpha^2+1)^2-2 = \alpha^4+2\alpha^2+1-2 = \alpha^4+2\alpha^2-1 = \alpha^4+2\alpha^2+2=f(\alpha) = 0    
+    \]
+    Also ist $\alpha^2+1$ eine Nullstelle von $X^2-2\in \F_3[X]$ nach Definition gilt dann $\alpha^2+1=\sqrt{2}$, da die $\sqrt{2}$ nach Wahl eines algebraischen Abschlusses von $\F_3$ eindeutig festgelegt ist.
+    \\ Daher ist $\F_3(\sqrt{2},\alpha) = \F_3(\alpha)$ ein Zerfällungskörper von $f$ über $\F_3$, da alle Nullstellen darin liegen (das haben wir ja gerade gezeigt) und er auch gerade durch Adjunktion der Nullstellen entsteht. \\
+    Sei nun $L=\F_3(\alpha)$. Es ist $L/\F_3$ einfach und algebraisch und da $f$ irreduzibel und normiert ist, ist $f$ das Mipo von $\alpha$. Daher gilt $[L:\F_3]= 4$. Als endliche Erweiterung endlicher Körper ist $L/\F_3$ endlich galoissch. Ferner ist wird die Galoisgruppe vom Frobenius $\sigma:L\to L, \ a\mapsto a^3$ erzeugt, ist also zyklisch, von der Ordnung vier. Insgesamt haben 
+    wir also $G\coloneqq \gal(L/\F_3) = \langle \sigma\rangle \simeq \Z/4\Z$. Wir wissen, dass $\Z/4\Z$ nur eine nicht-triviale Untergruppe hat, nämlich $H\coloneqq \langle \overline{2}\rangle\subset \Z/4\Z$.
+    \\ Wir haben die folgenden Elemente der Galoisgruppe, denn da $f$ irreduzibel wirkt die Galoisgruppe transitiv auf den Nullstellen von $f$
+    \begin{enumerate}[(1)]
+        \item $\sigma_1:L\to L$ mit $\alpha\mapsto \alpha$
+        \item $\sigma_2:L\to L$ mit $\alpha\mapsto -\alpha$
+        \item $\sigma_3:L\to L$ mit $\alpha \mapsto \sqrt{2}/\alpha$.
+        \item $\sigma_3:L\to L$ mit $\alpha\mapsto -\sqrt{2}/\alpha$.
+    \end{enumerate} 
+    Das Element $\sigma_2$ hat die Ordnung zwei, sein Fixkörper ist also gerade quadratisch über $\F_3$ und ist also isomorph zu $\F_9$, weil es bis auf Isomorphie genau einen Körper gibt, der quadratisch über $\F_3$ ist. Sei $E$ ein echter Zwischenkörper von $L/\F_3$, dann gilt $[E:\F_3] \mid [L:\F_3]=4$ und da $[E:\F_3]\neq 1,4$, folgt $[E:\F_3]=2$. Da es aber bis auf Isomorphie nur einen Zwischenkörper gibt, der über $\F_3$ quadratisch ist, 
+    folgt, dass $L/\F_3$ die Zwischenkörper: $L$,$\F_3$, $\F_9$ hat. Wir können $L$ konkreter angeben, nämlich ist $[L:\F_3]=4$, also ist $L\simeq \F_{81}$ und wir haben somit auch einen konkreten Zerfällungskörper von $f$ angegeben.
+\end{proof}
