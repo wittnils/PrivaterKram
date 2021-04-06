@@ -1,0 +1,186 @@
+\section*{Satz von Tychonoff} 
+Sei $(X_\lambda)_{\lambda\in \Lambda}$ eine Familie kompakter topologischer Räume. Wir zeigen, dass $X=\prod_{\lambda\in\Lambda} X_\lambda$ bezüglich der Produkttopologie kompakt ist.
+Kurze Reminder für die Begriffe:
+\begin{defn}
+    Ein topologischer Raum $(X,\cali{O})$ heißt kompakt, falls jede Überdeckung $\bigcup_{\alpha\in A} U_\alpha = X$ für $U_\alpha\in \cali{O}$ eine endliche (Teil-)Überdeckung hat.
+\end{defn} 
+\begin{defn}[Erzeugte Topologie]
+    Sei $\mathfrak{S}\subset X$ eine Teilmenge, dann heißt 
+    \[
+        \cali{O}(\mathfrak{S})\coloneqq \left\{ \bigcup_{\alpha\in A}\bigcap_{i\in I_\alpha} S_i: A \text{ beliebig},\ I_\alpha \text{endlich}, S_i\in \mathfrak{S}, \forall i\in I_\alpha,\alpha\in A\right\}    
+    \]
+    die von $\mathfrak{S}$ erzeugte Topologie, mit den Konventionen $\bigcap_{i\in \varnothing} M_i = X$ und $\bigcup_{i\in \varnothing} M_i = \varnothing$ ist klar, dass $\cali{O}(\mathfrak{S})$ eine Topologie ist. Sie ist ferner die kleinste Topologie, die alle Mengen aus $\mathfrak{S}$ enthält. Man nennt dann $\mathfrak{S}$ eine Subbasis von $X$.
+\end{defn}
+Für eine Familie topologischer Räumen $(X_\lambda,\cali{O}_\lambda)$ für $\lambda\in \Lambda$ bezeichnen wir mit $\pi_\lambda$ die Projektion von $X\to X_\lambda$. 
+\begin{defn}[Produkttopologie] Sei $(X_\lambda,\cali{O}_\lambda)$ für $\lambda\in \Lambda$ eine Familie topologischer Räumen. Auf $X=\prod_{\lambda\in\Lambda} X_\lambda$ definieren wir eine Topologie. Sei zunäcsht 
+    \[
+        M\coloneqq \{\pi_\lambda^{-1}(O_\lambda) : \lambda\in \Lambda, O\in \cali{O}_\lambda\}
+    \] 
+    und dann definieren wir 
+    die Produkttopologie als die von $M$ erzeugte Topologie.
+    \end{defn}
+Ab jetzt sei $X$ immer mit der Produkttopologie ausgestattet. Wir zeigen zunächst folgendes Lemma:
+\begin{lemma} Seien $X$ und $X_\lambda$ für $\lambda\in \Lambda$ wie oben. Dann gilt: Jede offene Überdeckung durch Mengen der Form
+    $\pi_\lambda^{-1}(O_\lambda)$ mit $O_\lambda\in \cali{O}_\lambda$ hat eine endliche Überdeckung von $X$.
+\end{lemma}
+\begin{proof}
+    Sei $\cali{U}$ eine Überdeckung von $X$ derart wie im Lemma beschrieben, wir definieren
+    \[
+    \cali{C}_\lambda \coloneqq \{ O\in \cali{O}_\lambda : \pi_\lambda^{-1}(O)\in \cali{U}\}    
+    \]
+    Angenommen $\cali{C}_\lambda$ überdeckt nicht $X_\lambda$ für alle $\lambda\in \Lambda$, dann gibt es ein $x_\lambda\in X_\lambda$ so dass $x_\lambda$ kein Element der Vereinigung der Mengen aus $\cali{C}_\lambda$ ist, für alle $\lambda\in \Lambda$. Das Element $x=(x_\lambda)_{\lambda\in \Lambda}\in X$ wird dann nicht von $\cali{U}$ überdeckt, sonst gäbe 
+    es ein $\lambda\in \Lambda$ und $O\in \cali{O}_\lambda$ mit $x\in \pi_\lambda^{-1}(O)$, dann ist aber $\pi_\lambda(x)=x_\lambda \in O\in \cali{C}_\lambda$, was ein Widerspruch dazu ist, dass $x_\lambda$ kein Element der Vereinigung aus Mengen von $\cali{C}_\lambda$ ist. \\
+    Also gibt es ein $\lambda\in \Lambda$ so dass $\cali{C}_\lambda$ nun $X_\lambda$ überdeckt. Da $X_\lambda$ kompakt ist, gibt es gewisse $O_1,\ldots,O_n\in \cali{O}_\lambda$ mit 
+    $X_\lambda = \bigcup_{i=1}^n O_i$. Dann ist $\pi_\lambda^{-1}(O_i)$ für $i=1,\ldots,n$ eine offene Überdeckung von $X$, denn 
+    sei $x=(x_\mu)_{\mu\in\Lambda}$ beliebig, dann ist $x_\lambda\in X_\lambda$ und es gibt ein $O_j$ für $j\in \{1,\ldots,n\}$ mit $x_\lambda\in O_j$ und daher $x\in \pi_\lambda^{-1}(O_j)$. Dass die Überdeckung offen ist, folgt aus der Stetigket der Projektionen bezüglich der Produkttopologie.  
+\end{proof}
+Der Rest des Beweises beruht auf dem Konzept von \textit{(Ultra-)Filtern}, die in einem gewissen Sinne den Begriff von Konvergenz auf topologische Räume verallgemeinern. 
+\begin{defn}
+    Ein System von Teilmengen $\mathcal{F}$ heißt Filter, falls
+    \begin{enumerate}[(i)]
+        \item Falls $A,B\in \mathcal{F}$, dann gilt $A\cap B\in \mathcal{F}$.
+        \item Falls $A\in \mathcal{F}$ und $B\supseteq A$, dann $B\in \mathcal{F}$.
+        \item $\varnothing\notin \mathcal{F}$
+    \end{enumerate}
+    ein Ultrafilter $\mathcal{F}$ ist ein maximaler Filter bezüglich der partiellen Ordnung $\subseteq$ auf der Menge aller Filter, das heißt, dass für alle Filter $\mathcal{G}$ mit $\mathcal{F}\subseteq \mathcal{G}$ gilt $\mathcal{F}=\mathcal{G}$. 
+\end{defn}
+\begin{defn}
+    Sei $(P,\le)$ eine halbgeordnete Menge, eine Kette ist eine Teilmenge $K\subset P$, sodass für alle $x,y\in K$ gilt $x\le y$ oder $y\le x$.
+\end{defn}
+Das Lemma von Zorn besagt, dass eine halbgeordnete Menge, in der jede Kette eine obere Schranke hat, ein maximales Element enthält.
+\begin{lemma}Jeder Filter ist in einem Ultrafilter enthalten.
+\end{lemma}
+\begin{proof}
+    Sei $\mathcal{F}$ ein Filter und sei $\cali{U}$ die Menge aller Filter (offenbar durch $\subseteq$ eine halbgeordnete Menge), die $\mathcal{F}$ enthalten. Sei $\mathcal{C}$ eine Kette in $\cali{U}$. Dann ist 
+    \[
+    \mathcal{S} \coloneqq \bigcup_{\mathcal{G}\in \mathcal{C}} \mathcal{G}     
+    \] 
+    ein Filter und insbesondere eine obere Schranke von $\mathcal{C}$ (dass es ein Filter ist, sieht man sofort, wobei man beachtet, dass beim Nachweisen von (i) in der Definition explizit eingeht, dass $\mathcal{C}$ eine Kette ist). Nach dem Lemma von 
+    Zorn gibt es also ein maximales Element in $\cali{U}$.
+\end{proof}
+\begin{lemma}
+    Sei $\mathcal{F}$ ein Ultrafilter auf einem topologischen Raum $X$, dann gilt für alle $A\subset X$, dass etnweder $A\in \mathcal{F}$ oder $X\setminus A\in \mathcal{F}$.
+\end{lemma}
+\begin{proof}
+    Wären $A,X\setminus A\in \mathcal{F}$, dann auch $\varnothing = (X\setminus A)\cap A$, aber $\mathcal{F}$ ist ein Filter. Sei also $A\notin \mathcal{F}$. Dann gilt für jede Menge $M\subset A$, dass $M\notin \mathcal{F}$, sonst wäre $A\in \mathcal{F}$, folglich hat jede Menge in $\mathcal{F}$ einen nichtleeren Schnitt mit $X\setminus A$. \\
+    Die Menge 
+    \[
+    \mathcal{G} \coloneqq \{M\subseteq X:M\supseteq P\cap (X\setminus A) \text{ für ein } P\in \mathcal{F}   \}    
+    \]
+    ist ein Filter, der $\mathcal{F}$ enthält. Grund:
+    \begin{enumerate}[(i)]
+        \item Seien $A,B\in \mathcal{G}$, dann gibt es $P_1,P_2\in \mathcal{F}$ mit $A\supseteq P_1\cap (X\setminus A)$ und $B\supseteq P_2\cap (X\setminus A)$. Dann gilt
+        \[
+        A\cap B \supseteq (\underbrace{P_1\cap P_2}_{\in \mathcal{F}}) \cap (X\setminus A) \implies A\cap B \in \mathcal{G}
+        \]
+        \item Sei $A\in \mathcal{G}$ und $B\supseteq A$, dann gibt es $P\in \mathcal{F}$ mit 
+        \[
+        B\supseteq A \supseteq P\cap (X\setminus A) \implies B\in \mathcal{G}    
+        \] 
+        \item Da für alle $G\in \mathcal{G}$ und alle $P\in \mathcal{F}$ gilt, dass $G\supseteq P\cap (X\setminus A) \neq \varnothing$ ist also $\varnothing \notin \mathcal{G}$.
+        \item Sei $F\in \mathcal{F}$, dann gilt $F\supseteq F\cap (X\setminus A)\in \mathcal{G}$, also $F\in \mathcal{G}$, da $\mathcal{G}$ ein Filter ist. Folglich ist $\mathcal{F}\subseteq \mathcal{G}$.
+    \end{enumerate}
+    Da $\mathcal{F}$ ein Ultrafilter ist, gilt $\mathcal{F}=\mathcal{G}$. Es gilt $X\in \mathcal{F}$ (das gilt für jeden Filter), also gilt $X\cap (X\setminus A) = X\setminus A \in \mathcal{G}=\mathcal{F}$, was zu zeigen war.
+\end{proof}
+Wir führen noch den Begriff einer Subbasis ein 
+\begin{defn}
+    Sei $(X,\cali{O})$ ein topologischer Raum, dann ist $\cali{S}\subset \mathfrak{P}(X)$ eine Subbasis, falls alle offenen Mengen eine Darstellung als beliebige Vereinigung endlicher Schnitte von Mengen aus $\cali{S}$ hat. 
+\end{defn}
+\begin{defn}
+    Ein Filter $\mathcal{F}$ auf einem topologischen Raum $X$ heißt konvergent gegen ein $a\in X$, falls jede Umgebung von $a$ ein Element des Filter ist.
+\end{defn}
+Der folgende Satz zusammen mit Lemma 1 liefert den Satz von Tychonoff. 
+\begin{satz}
+    Sei $(X,\cali{O})$ ein topologischer Raum und $\cali{S}$ ein Subbasis von $X$, so dass jede Überdeckung von $X$ durch Mengen aus $\cali{S}$ eine endliche Teilüberdeckung hat. Dann ist $X$ kompakt.
+\end{satz}
+\begin{proof}
+    Erster Schritt: Jeder Ultrafilter auf $X$ konvergiert. Denn: Angenommen es gibt einen Ultrafilter $\mathcal{F}$, der nicht konvergiert. Erster Teilschritt: Dann gibt es für alle $x\in X$ eine Umgebung $U_x\subset X$, so dass $U_x\in \cali{S}\setminus \mathcal{F}$, denn: angenommen jede Menge in $\cali{S}$, die eine Umgebung von $x$ ist, wäre enthalten in $\mathcal{F}$, dann sei $U$ eine beliebige Umgebung von $x$, dann gilt, dass $U$ eine Darstellung hat als 
+    \[
+        U = \bigcup_{\alpha \in A} \bigcap_{i\in I_\alpha} S_i   , \quad S_i \in \cali{S}, \ \forall \alpha\in A, i \in I_\alpha 
+    \] 
+    angenommen jede Menge in $\cali{S}$, die $x$ umfasst, wäre in $\mathcal{F}$. Dann gibt es ein $\alpha\in A$, so dass $x\in\bigcap_{i\in I_\alpha} S_i$, insbesondere gilt dann $x\in S_i$ für $i\in I_\alpha$, also $S_i \in \mathcal{F}$, da $S_i \in \cali{S}$. Also gilt $\bigcap_{i\in I_\alpha}S_i\in \mathcal{F}$, weil $\mathcal{F}$ ein Filter ist und $I_\alpha$ eine endliche Menge. Weil $U\supseteq \bigcap_{i\in I_\alpha} S_i \in \mathcal{F}$, ist auch $U\in \mathcal{F}$, da $U$ eine beliebige Umgebung von $x$ war, konvergiert $\mathcal{F}$ gegen $x$ im Widerspruch zur Annahme, dass $\mathcal{F}$ nicht konvergiert.  \\
+    Für alle $x\in X$ gibt es nun also Umgebungen $U_x\in \cali{S}\setminus \mathcal{F}$. Die Familie $(U_x)_{x\in X}$ ist eine Überdeckung durch Mengen aus $\cali{S}$, daher gibt es gewisse $x_1,\ldots,x_n\in X$, so dass \[X=U_{x_1}\cup \ldots\cup U_{x_n}\]
+    Alle $U_{x_i}$ liegen nicht in $\mathcal{F}$, daher liegen deren Komplemente alle in $\mathcal{F}$, weil $\mathcal{F}$ ein Ultrafilter ist, aber dann gilt 
+    \[
+    X\setminus U_{x_1}\cap \ldots \cap X\setminus U_{x_n} \subseteq X\setminus \bigcup_{i\in \{1,\ldots,n\}} U_{x_i} = \varnothing    
+    \]
+    im Widerspruch dazu, dass $\mathcal{F}$ ein Filter ist. Also konvergiert $\mathcal{F}$. \\
+    Zweiter Schritt: $X$ ist kompakt. Denn: Sei $(U_\alpha)_{\alpha\in A}$ eine offene Überdeckung von $X$. Angenommen es gibt keine endliche Teilüberdeckung, dann gilt für jede endliche Auswahl $I_\alpha\subset A$, dass 
+    \[
+    X\setminus\left(\bigcup_{i\in I_\alpha}U_{i}\right) \neq \varnothing    
+    \]
+    die folgende Menge 
+    \[
+    \{F\subseteq X: F\supseteq X\setminus (U_{i_1}\cup \ldots \cup U_{i_n}) \text{ für ein } n\ge 0 \} 
+    \]
+    ist ein Filter (interessant ist dabei, dass die leere Menge nicht in der Menge liegt). Sei $\mathcal{F}$ der Ultrafilter, der die Menge umfasst. Also gibt es ein $a\in X$, so dass $\mathcal{F}$ gegen $a$ konvergiert. Nun ist $a\in U_\alpha$ für ein $\alpha\in A$, daher gilt $U_\alpha\in \mathcal{F}$, gleichzeitig gilt aber auch, dass $X\setminus U_\alpha \in \mathcal{F}$. Dann ist aber $\varnothing\in\mathcal{F}$, was ein Widerspruch ist. Also ist $X$ doch kompakt.
+\end{proof}
+Nun noch ein paar weitere hilfreiche Tricks
+\begin{lemma}
+    Sei $(X_\lambda)_{\lambda\in \Lambda}$ eine Familie topologischer Räume und $X$ deren Produkt ausgestattet mit der Produkttopologie. Sei $Y$ ein weiterer topologischer Raum und $f:Y\to X$ ein Abbildung. Dann gilt, dass die folgenden Aussagen äquivalent sind
+    \begin{enumerate}[(i)]
+        \item $f$ ist stetig.
+        \item Für alle $\lambda\in \Lambda$ ist $\pi_\lambda\circ f$ stetig.
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    Sei $f$ stetig, dann ist $\pi_\lambda:X\to X_\lambda$ für alle $\lambda \in \Lambda$ stetig, also $\pi_\lambda\circ f$ stetig.
+    Angenommen es gilt, dass $\pi_\lambda \circ f$ stetig ist für alle $\lambda\in \Lambda$. Die Produkttopologie auf $X$ wird von den Mengen \[
+        M\coloneqq \{ \pi_\lambda^{-1}(O_\lambda):\lambda\in \Lambda, O_\lambda\subset X_\lambda \ \text{offen}\} 
+        \]
+        erzeugt. Sei also $O\subset X$ offen, dann gibt es eine Darstellung der Form
+        \[
+        O = \bigcup_{\alpha\in A}\bigcap_{i\in I_\alpha} M_i    
+        \]
+        wobei $I_\alpha$ endlich ist und $A$ beliebig und $M_i\in M$. Es gilt
+        \[
+        f^{-1}(O) =     \bigcup_{\alpha\in A}\bigcap_{i\in I_\alpha} f^{-1}(M_i)
+        \]
+        und es gibt immer ein $\lambda \in \Lambda, O_\lambda\subset X_\lambda$ offen, so dass $M_i = \pi_\lambda^{-1}(O_\lambda)$, also gilt $f^{-1}(M_i) = (\pi_\lambda\circ f)^{-1}(O_\lambda)$ offen, daher ist $f^{-1}(O)$ offen, was zu zeigen war.
+\end{proof}
+\subsection*{Die Topologie von $\Z_p$}
+Für $n>1$ definieren wir $A_n \coloneqq \Z/p^n\Z$ und betrachten das System 
+\[
+\ldots \to A_n \to \ldots \to A_2 \to A_1    
+\]
+mit der Übgergangsabbildung $A_{n+1}\to A_n, \ x\mod p^{n+1}\mapsto x\mod p^n$. Dann gilt offenbar, dass wir uns Abbildungen $\phi_{ij}:A_i\to A_j$ für $i\ge j$ definieren können, wobei $x\mod p^i \mapsto x\mod p^j$. Dann gilt offenbar für alle $1\le j\le k\le i$, dass $\phi_{ij}=\phi_{ik}\circ \phi_{kj}$. Die ganzen $p$-adischen Zahlen definieren wir durch
+\[
+    \Z_p\coloneqq\varprojlim_{n\ge 1} \Z/p^n\Z =
+    \left\{
+        (x_n)_{n\in \N} \in \prod_{n\in \N}\Z/p^n\Z : \phi_{ij}(x_i) = x_j, \ \forall i\ge j
+    \right\}
+\]
+wir statten $A_n$ mit der diskreten Topologie aus (das heißt die Topologie ist $\mathfrak{P}(A_n)$), dann ist $A_n$ endlich, also kompakt. Als beliebiges Produkt kompakter topologischer Räume ist dann nach dem Satz von Tychonoff auch $A=\prod_{n\in \N}A_n$ ein kompakter topologischer Raum, wenn wir ihn mit der Produkttopologie versehen, und  
+wir statten dann $\Z_p$ mit der Teilraumtopologie der Produkttopologie aus.
+\subsubsection*{$\Z_p$ ist ein topologischer Ring} \begin{defn}
+    Ein Ring $(R,+,\cdot)$ zusammen mit einer Topologie $\cali{O}$ auf $R$ heißt topologischer Ring, falls die Verknüpfungen auf $R$ bezüglich der Topologie $\cali{O}$ stetig sind.
+\end{defn}
+Wir werden zeigen, dass $\Z_p$ ein topologischer Ring ist. 
+\begin{enumerate}[(1)]
+    \item Die Addition ist stetig. Wir zeigen sogar, dass die Abbildung
+    \[
+    A\times A\to A, \quad (x,y)\mapsto x+y    
+    \]
+    stetig ist, daraus folgt, dass Addition in $\Z_p$ stetig ist, weil:
+    \[
+    \Z_p \times \Z_p \to A\times A \to A,\quad  (x,y)\mapsto (x,y)\mapsto x+y
+    \]
+    als Verknüpfung stetiger Funktionen stetig ist. Die Inklusion ist aus folgendem Grunde stetig:
+    \\ Die Produkte $\Z_p \times \Z_p$ und $A\times A$ seien mit der jeweiligen Produkttopologie ausgestattet. Sei $\pi^A_i:A\times A\to A$ für $i=1,2$ die Projektion auf die $i$-te Komponente. Wir haben gesehen, dass es genügt, nachzuweisen, dass $\pi_i \circ \iota$, wobei $\iota$ die Inklusion $\Z_p \times \Z_p \to A\times A$ sei, stetig ist.
+    Aber wir können die Abbildung dann auch auffassen als $\Z_p \times \Z_p \to \Z_p \to A$, das sind alles stetige Abbildungen. Wir zeigen, dass Addition in $A$ stetig ist.
+    \\ Dafür zeigen wir, dass für alle $n\ge 1$ die Abbildung
+    \[
+    A\times A\to A_n, \quad (x,y)\mapsto x_n+y_n    
+    \]
+    stetig ist. Das ist offenbar genau dann, der Fall, wenn die Abbildung
+    \[
+    A\times A \to A_n\times A_n \to A_n, \quad (x,y)\mapsto (x_n,y_n)\mapsto x_n+y_n    
+    \]
+    stetig ist. Die Projektion auf die $n$-te Komponente ist stetig, denn die ist genau dann stetig, wenn die Abbildungen $(x,y)\mapsto x_n$ und $(x,y)\mapsto y_n$ stetig sind. Das können wir aber auffassen also $(x,y)\mapsto x \mapsto x_n$, was (bzw. alles mit $y$), was als Verknüpfung stetiger Funktionen stetig ist. \\
+    Die Addition in $\Z/p^n\Z$ ist stetig, weil $\Z/p^n\Z$ die diskrete Topologie trägt und damit auch das Produkt die diskrete Topologie trägt, denn die Mengen $\{a\}\times \{b\}$ für $a,b\in \Z/p^n\Z$ sind alle offen. Aber Abbildungen aus einem Raum mit der diskreten Topologie sind immer stetig. Daher ist die Addition in $A$ stetig und somit auch die in $\Z_p$. 
+    \item Weil daher auch Multiplikation in $\Z/p^n\Z$ stetig ist und mit denselben Argumentationen wie für die Addition ist also auch die Multiplikation in $\Z_p$ stetig.
+\end{enumerate}
+\subsection*{$\Z_p$ ist ein kompakter topologischer Raum}
+\begin{enumerate}
+    \item 
+\end{enumerate}
