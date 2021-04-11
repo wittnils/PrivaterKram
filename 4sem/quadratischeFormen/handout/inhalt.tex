@@ -1,0 +1,36 @@
+\textbf{Vorbemerkung:} Innerhalb dieses Vortrags sei $k=\Q_p$ mit $p$ einer Primzahl. Alle quadratischen Formen 
+seien nicht ausgeartet. Zuerst erinnern wir uns an das Hilbertsymbol aus §3:
+\begin{remind}[Hilbertsymbol]
+    Sei $k\in\{\Q_p,\R\}$. Die Abbildung 
+    \begin{align*}
+        k^\times/(k^\times)^2\times k^\times/(k^\times)^2&\to \{0,1\} \\  (a,b) &\mapsto (a,b) \coloneqq 
+        \begin{cases}
+            1, & Z^2-aX^2-bY^2 \text{ hat Lösung } \neq (0,0,0)\text{ in } k^3  \\ 
+            -1, & \text{sonst}
+        \end{cases}
+    \end{align*}
+    ist eine nicht ausgeartete Bilinearform. Der Audruck $(a,b)$ heißt das \textrm{Hilbertsymbol} von $a$ und $b$ relativ zu $k$.
+\end{remind}
+\subsection*{Die Invarianten quadratischer Formen}
+Sei $(V,Q)$ ein quadratischer Modul und sei $\langle \cdot,\cdot\rangle$ die induzierte symmetrische Bilinearform, dann gibt es eine Orthogonalbasis von
+$(V,Q)$, etwa $e=(e_1,\ldots,e_n)$ und $A=(\langle e_i,e_j\rangle)_{i,j}$, dann ist
+\[
+\operatorname{disc}(Q) \coloneqq \det A = a_1\cdot\ldots\cdot a_n     
+\]
+als Element von $k^\times/(k^\times)^2$ eindeutig bestimmt. Der folgende Satz liefert uns die zweite Invariante quadratischer Moduln
+\begin{satz}[Hasse-Invariante] Sei $e$ wie oben eine Orthogonalbasis von $(V,Q)$, dann ist die Zahl
+    \[
+    \epsilon(e) \coloneqq \prod_{i<j}(e_i,e_j)    
+    \]
+    unabhängig von der Wahl der Orthogonalbasis von $(V,Q)$.
+\end{satz}
+Übersetzt in die Sprache der quadratischen Formen liest sich das Resultat: Für eine quadratischen Form $f$, wobei 
+$
+f\sim a_1X_1^2+\ldots+a_nX_n^2    
+$ sind die Zahlen 
+\begin{align*}
+    &d(f) = a_1\cdot\ldots\cdot a_n \in k^\times/(k^\times)^2 \\ 
+    &\epsilon(f) = \prod_{i<j}(a_i,a_j)
+\end{align*}
+Invarianten der Äquivalenzklasse von $f$. \\ \textbf{Ziel:} Zwei quadratische Formen genau dann äquivalent sind, wenn 
+sie denselben Rang, dieselbe Diskriminante und dieselbe Hasse-Invariante haben.
