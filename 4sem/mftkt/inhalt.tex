@@ -1,0 +1,129 @@
+\subsection*{Preliminaries}
+\begin{defn}
+    Seien $U,V\subset \R^n$ offen, dann heißt $f:U\to V$ stetig differenzierbar, falls alle partiellen Ableitungen 
+    \[
+    \R^n\ni \frac{\partial f}{\partial x_i}(x) \coloneqq \lim_{h\to 0}\frac{f(x+he_i)-f(x)}{h}    
+    \] 
+    für alle $x\in U$ exisiteren und die Abbildung $\partial_i f: U \to \R^n, \ x\mapsto \partial_i f(x)$ stetig ist. 
+\end{defn}
+Iterativ definieren sich so mehrfache Abbildungen. Eine Abbildung heißt $\alpha$-mal stetig differenzierbar, falls für jeden Multiindex
+$\alpha\in \N^n$ die Ableitung $\partial^\alpha f$ existiert und $\partial^\alpha f: U \to \R^n, \ x\mapsto \partial^\alpha f(x)$ stetig ist.
+\begin{lemma}
+    $U,V\subset \R^n$ offen, $f=(f_1,\ldots,f_n):U \to V$, dann ist $f$ genau dann (stetig) differenzierbar, wenn $f_i$ (stetig) differenzierbar ist für $i=1,\ldots,n$. 
+\end{lemma}
+\begin{proof}
+    Das liegt daran, dass der Vektor
+    \[
+    \frac{f(x+he_i)-f(x)}{h}    
+    \]
+    für $h\to 0$ konvergiert genau dann, wenn alle seine Komponenten für $h\to 0$ konvergieren und diese sind gerade 
+    \[
+    \frac{f_j(x+he_i)-f_j(x)}{h}, \quad j=1,\ldots,n.    
+    \]
+\end{proof}
+Sei $U\subset \R^n$ offen, dann ist $f:U\to \R^m$ genau dann stetig differenzierbar, wenn $f\vert_\Omega$ stetig differenzierbar ist für jede offene Teilmenge $\Omega\subset U$. 
+\newpage
+Eine Mannigfaltigkeit kann auf verschiedene Weisen betrachtet werden. 
+\begin{defn}
+    Eine Teilmenge $M\subset \R^n$ heißt $k$-dimennsionale Untermannigfaltigkeit
+    der Classe $\cali{C}^\alpha$, falls für alle $a\in M$ eine offene Umgebung $U\subset \R^n$ und
+    $f_1,\ldots,f_{n-k}\in \cali{C}^\alpha(U,\R)$ existieren mit 
+    \begin{enumerate}[(a)]
+        \item $M\cap U = \{ x\in U : f_1(x)=\ldots=f_{n-k}(x)=0\}$
+        \item Wir haben \[\operatorname{Rang}\frac{\partial(f_1,\ldots,f_{n-k})}{\partial(x_1,\ldots,x_n)}(a)=n-k\]
+    \end{enumerate}
+    wobei (b) äquivalent dazu ist, dass $\nabla f_1(a),\ldots,\nabla f_{n-k}(a)$ linear unabhängig sind. 
+\end{defn}
+Mittels des Satzes von der impliziten Funktion kann man zeigen, dass $k$-dimennsionale Mftkt. lokal als Graph einer Funktion in $k$ Variablen darstellen lässt. 
+\begin{satz} $M\subset \R^n$ eine $k$-dimennsionale $\cali{C}^\alpha$-Mannigfaltigkeit und $a=(a_1,\ldots,a_n)\in M$. Nach evtl. Umnummerierung der Koordinaten gibt es offene Umgebungen 
+    \begin{align*}
+        & U'\subset \R^k \text{ von } a'\coloneqq (a_1,\ldots,a_k) \\
+        & U'' \subset \R^{n-k} \text{ von } a''\coloneqq (a_{k+1},\ldots,a_n)
+    \end{align*}
+    und $g\in \cali{C}^\alpha(U',U'')$, sodass 
+    \[
+    M \cap (U'\times U'') = \{ (x',x'')\in U'\times U'' : x'' = g(x')\}     
+    \]
+\end{satz}
+\begin{satz}
+    Sei
+    \[
+    E_k \coloneqq \{(x_1,\ldots,x_n)\in \R^n : x_{k+1}=\ldots=x_n = 0\}    
+    \]
+    dann ist $M\subset \R^n$ genau dann eine $k$-dimennsionale $\cali{C}^\alpha$-Untermannigfaltigkeit, wenn es für alle $a\in M$ eine offene Umgebung $U\subset \R^n$ und einen $\cali{C}^\alpha$-Diffeomorphismus $F:U\to V$ mit $V\subset \R^n$ offen gibt, s.d. 
+    \[
+    F(M\cap U) = V\cap E_k    
+    \] 
+\end{satz}
+\begin{defn}
+    Sei $T\subset \R^k$ offen und $\phi:T\to \R^n$ stetig differenzierbar, dann heißt $\phi$ eine Immersion, falls $\operatorname{Rang} D\phi(t) = k, \ \forall t\in T$.
+\end{defn}
+Bilder von Immersionen sind $k$-dimennsionale Untermannigfaltigkeiten. 
+\begin{satz}
+    Sei $\Omega\subset \R^k$ offen und $\phi=(\phi_1,\ldots,\phi_n):\Omega\to \R^n$ eine Immersion der Klasse $\cali{C}^\alpha$, dann gibt es für alle $c\in \Omega$ eine offene Umgebung
+    $T\subset \R^k$, s.d. $\phi(T)\subset \R^n$ eine $k$-dimennsionale Untermannigfaltigkeit und $\phi:T\to \phi(T)$ ist ein Homöomorphismus. 
+\end{satz}
+\begin{proof}
+    Nach Umnummerierung der Koordinaten können wir annehmen
+    \[
+    \det \frac{\partial(\phi_1,\ldots,\phi_k)}{\partial(t_1,\ldots,t_k)}(c)\neq 0    
+    \]
+    nach dem Satz von der Umkehrabb. gibt es offene Umgebungen $c\in T\subset \Omega \subset \R^k$ und $V\subset \R^k$ offen, s.d. 
+    \[
+    (\phi_1,\ldots,\phi_k):T\to V
+    \]
+    ein $\cali{C}^\alpha$-Diffeomorphismus ist mit Inversem $\psi=(\psi_1,\ldots,\psi_k):V\to T$. Wir definieren $\Phi=(\Phi_1,\ldots,\Phi_n):T\times \R^{n-k}\to V\times \R^{n-k}$ durch 
+    \begin{align*}
+        & \Phi_i(t_1,\ldots,t_n) = \phi_i(t_1,\ldots,t_k), \quad 1\le i \le k \\
+        & \Phi_j(t_1,\ldots,t_n) = \phi_j(t_1,\ldots,t_k)+t_j, \quad k+1\le j \le n
+    \end{align*}
+    dann ist $\Phi$ ein $\cali{C}^\alpha$-Diffeomorphismus (Umkehrabbildung findet man leicht) und 
+    \[
+    \Phi(T\times 0) = (\phi(T)\times \R^{n-k})\cap E_k    
+    \]
+    daher ist $\phi(T)$ eine $k$-dimennsionale Untermannigfaltigkeit. Nun hat $\phi=(\phi_1,\ldots,\phi_n):T \to \im \phi$ das Inverse $\hat{\psi}(t_1,\ldots,t_k,\ldots,t_n) = \psi(t_1,\ldots,t_k)$ und $\hat{\psi}=\psi\circ(\R^n\xrightarrow{\pi} \R^k)$ und damit stetig. 
+\end{proof}
+Der nächste Satz sagt aus, dass Mannigfaltigkeiten lokal wie der euklidische Raum aussehen. 
+\begin{satz}
+    Es ist $M\subset \R^n$ genau dann eine $k$-dimennsionale Untermannigfaltigkeit der Klasse $\cali{C}^\alpha$, wenn es für alle $a\in M$ eine relativ offene Umgegbung 
+    $V\subset M$ und $T\subset \R^k$ offen und eine $\cali{C}^\alpha$-Immersion $\phi:T\to \R^n$ gibt, die $T$ homöomorph auf $V$ abbildet.
+\end{satz}
+\begin{proof}
+    \glqq $\Rightarrow$\grqq: Sei $a\in M$, dann gibt es eine $\cali{C}^\alpha$-Immersion $\phi:T\subset \R^k\to V$ mit $V\subset M$ relativ offen, $T\subset \R^k$ offen. 
+    Nach Satz 3 ist $\phi(T)\subset \R^n$ eine $k$-dimennsionale $\cali{C}^\alpha$-Untermannigfaltigkeit und $\phi(T)=V$. Insbesondere ist $a\in \phi(T)$. Daher ist $M$ eine $k$-dim. $\cali{C}^\alpha$-Untermannigfaltigkeit. 
+    \\ \glqq $\Leftarrow$\grqq: Wir schreiben 
+    \[
+        M \cap (U'\times U'') = \{(x',x'') \in U'\times U'': g(x') = x'' \}    
+    \]
+    und setzen $V\coloneqq M \cap (U'\times U''), \ T \coloneqq U$, dann ist
+    \[
+    \phi:T\to \R^n, \ \phi(t)=(t,g(t))    
+    \] 
+    eine $\cali{C}^\alpha$-Immersion, die $T$ homöomorph auf $V$ abbildet, denn: 
+    \begin{itemize}
+        \item $\phi$ hat das Inverse $\psi:\phi(T)\to T, (x',x'')\in \phi(T)\mapsto x'$. 
+        \item $\phi\in \cali{C}^\alpha(T,\R^n)\Leftrightarrow$ alle Komponenten von $\phi$ sind $\alpha$-mal stetig diff'bar, was offenbar der Fall ist. Und der erste $k\times k$-Block von $\partial \phi$ ist die $k\times k$-Einheitsmatrix.  
+    \end{itemize}
+\end{proof}
+Die Abbildung $\phi$ in Satz 4 nennt man eine Karte von $M$. Nun sind Kartenwechsel stets $\cali{C}^\alpha$:
+\begin{satz}
+    Sei $M\subset \R^n$ eine $k$-dimensionale $\cali{C}^\alpha$-Mannigfaltigkeit und 
+    \[
+    \phi_j : T_j \to V_j\subset M,\ j=1,2    
+    \]
+    zwei $\cali{C}^\alpha$-Karten mit $V=V_1\cap V_2\neq \varnothing$, so sind $W_j = \phi_j^{-1}(V)$ offen und 
+    \[
+    \tau \coloneqq \phi_2^{-1}\circ \phi_1 : W_1\to W_2    
+    \]
+    ist ein $\cali{C}^\alpha$-Diffeomorphismus.
+\end{satz}
+Folgender Satz ist beim Beweis hilfreich: 
+\begin{lemma}
+    Seien $U,V\subset \R^n$ offen, $f\in \cali{C}^\alpha(U,V)$ und $f$ bijektiv mit $\det Df \neq 0$, so ist $f$ ein Diffeomorphismus.
+\end{lemma}
+\begin{proof}
+    Die Umkehrabbildung sei $g:V\to U$ ist wohldefiniert. Es bleibt zu zeigen, dass $g\in \cali{C}^\alpha(V,U)$. Sei $y\in V$, so existert genau ein $x\in U$ mit $f(x)=y$, nach dem Satz von UA gibt es Umgegbungen $U_x\subset U$ und $V_y\subset V$, s.d. $f\vert_{U_x}\coloneqq f_x:U_x\to V_y$ ein Diffeomorphismus ist. Nun ist
+    $f_x^{-1}=g\vert_{V_y}$ stetig differenzierbar. Also ist $g$ stetig differenzierbar.  
+\end{proof}
+\newpage
+

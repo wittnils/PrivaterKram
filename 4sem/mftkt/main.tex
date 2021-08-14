@@ -1,0 +1,28 @@
+\documentclass{scrartcl}
+\usepackage{microtype}
+\usepackage[scale=0.75]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\input{mathpkg.tex}
+% header and footer with scrlayer-scrpage
+\usepackage{scrlayer-scrpage}
+\usepackage{fleqn}
+\usepackage{xcolor}
+
+\lohead*{}
+\cohead*{}
+\rohead*{Mannigfaltigkeiten}
+\cofoot*{}
+\lofoot*{Seite \thepage}
+\pagestyle{scrheadings}
+\title{}
+\subtitle{}
+\date{[Platzhalter für Datum]}
+\author{}
+\setlength\parindent{0pt}
+
+\begin{document}
+\input{inhalt.tex}
+\input{tangentundnr.tex}
+\end{document}

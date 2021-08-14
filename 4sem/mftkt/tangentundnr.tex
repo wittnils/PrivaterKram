@@ -1,0 +1,114 @@
+\subsection*{Tangential- und Normalenräume}
+Ein Tangentialvektor an einer Untermannigfaltigkeit ist ein Tangentenvektor
+an einer in der Mannigfaltigkeit verlaufenden Kurve. 
+\begin{defn}
+    Sei $M\subset \R^n$ eine Untermannigfaltigkeit, $a\in M$. So heißt $v\in \R^n$ ein Tangentialvektor von $M$ an $a$, falls 
+    ein $\epsilon>0$ und $\psi:(-\epsilon,\epsilon)\to M\subset \R^n$ stetig differenzierbar existieren, s.d. 
+    \[
+    \psi(0) = a, \quad \psi'(0)=v    
+    \]
+    Die Menge aller Tangentialvektoren wird mit $T_aM$ bezeichnet.
+\end{defn}
+Der Tangentialraum zum Beispiel an einem Sattel ist intuitiv eine Ebene, d.h. er hat als Vektorraum dieselbe Dimension
+wie die Mannigfaltigkeit. Das verallgemeinert sich 
+\begin{satz}
+    Sei $M\subset \R^n$ eine $k$-dimensionale Untermannigfaltigkeit, $a\in M$. So gilt
+    \begin{enumerate}[(a)]
+        \item $T_aM$ ist ein $k$-dimensionaler reeller Vektorraum
+        \item Sei $\phi:\Omega\to V\subset M$ eine Karte von $M$ mit $\Omega\subset\R^k$ offen und $V$ relativ offen in $M$. Weiter sei $c\in \Omega$ mit $\phi(c)=a$, dann bilden die Vektoren
+        \[
+        \frac{\partial \phi}{\partial t_1}(c),\ldots,\frac{\partial\phi}{\partial t_k}(c)    
+        \]
+        eine Basis von $T_aM$.
+        \item Sei $U\subset \R^n$ offene Umgebung von $a$ und $f_1,\ldots,f_{n-k}:U\to \R$ stetig differenzierbar mit 
+        \[
+        M\cap U = \{ x\in U : f_i(x)=0, \ i=1,\ldots,n-k\}    
+        \]
+        und 
+        \[
+        \operatorname{Rang} \frac{\partial(f_1,\ldots,f_{n-k})}{\partial(x_1,\ldots,x_n)}(a)=n-k    
+        \]
+        so gilt 
+        \[
+        T_aM = \{ v\in \R^n \mid \langle v,\nabla f_j(a)\rangle = 0, \ j=1,\ldots,n-k\}    
+        \]
+    \end{enumerate}
+\end{satz}
+Der in (b) aufgespannte Vektorraum ist $k$-dimensional, denn der Rang der Jacobi-Matrix einer Immersion ist gerade $k$. Dasselbe gilt für den Vektorraum in (c), denn er ist das ortogonale Komplement von $n-k$ linear unabhängigen Vektoren. 
+\begin{defn}
+    Sei $M\subset \R^n$ eine $k$-dimensionale Untermannigfaltigkeit, dann heißt $w\in \R^n$ ein Normalenvektor an $T_a M$, falls 
+    \[
+    \langle w,v\rangle = 0, \ \forall v\in T_aM    
+    \]
+    Wegen Satz 6 ist $N_aM = \{ w\in \R^n : w \text{ ist Normalenvektor}\}$ ein $n-k$ dimensionaler Vektorraum und wird (mit der Notation aus Satz 6) von den Vektoren
+    \[
+    \nabla f_1(a),\ldots,\nabla f_{n-k}(a)    
+    \]
+    aufgespannt. 
+\end{defn}
+\begin{defn}
+    Sei $A\subset \R^n$ kompakt. $A$ hat glatten Rand, falls für alle $a\in \partial A$ eine offene Umgebung
+    $U\subset \R^n$ und $\psi:U\to \R$ existieren, s.d. 
+    \begin{enumerate}[(i)]
+        \item $A\cap U = \{ x\in U : \psi(x)\le 0\}$
+        \item $\nabla \psi(x)\neq 0,\ \forall x\in U$
+    \end{enumerate}
+\end{defn}
+\begin{lemma}
+    $A\subset \R^n$ kompakt mit glattem Rand, $a\in \partial A$ und $\psi:U\to \R$ wie oben, dann gilt
+    \[
+    \partial A \cap U = \{ x\in U : \psi(x)=0\}    
+    \]
+\end{lemma}
+\begin{proof}
+    Wegen $A$ kompakt, ist $\partial A\subset A$, d.h. $\partial A \cap U \subset \{ x\in U : \psi(x)\le 0\}$. 
+    Sei $x\in U$ mit $\psi(x)<0$, wegen der Stetigkeit von $\psi$ gibt es eine offene Umgebung $V\subset U$ von $x$ mit $\psi(y)<0,\ \forall y\in V$, d.h. jedoch, dass $V\subset A$. Also $x\notin \partial A$. Also haben wir gezeigt, dass gilt $\partial A \cap U \subset \{x\in U : \psi(x)=0\}$.
+    \\ Sei $a\in U$ mit $\psi(a)=0$. Sei $v\coloneqq \nabla \psi(x)\neq 0$, dann gilt 
+    \[
+    \psi(a+\xi) = \psi(a)+ \langle \nabla \psi(a),\xi \rangle + o(\xi) = \langle v,\xi \rangle + o(\xi)    
+    \] 
+    nach Taylor. Mit $\xi = tv, \ t\in \R$ ist 
+    \[
+    \psi(a+tv) = t \Vert v\Vert^2 + o(tv)    
+    \]
+    Für $t<0$ erhalten wir 
+    \[
+    \lim_{t\to 0} \frac{\psi(a+tv)}{\Vert tv\Vert} = \lim_{t\to 0} \frac{t}{\vert t\vert}\Vert v\Vert + \frac{o(tv)}{\Vert tv\Vert} = -\Vert v\Vert <0     
+    \]
+    analog für $t>0$, daher gibt es ein $\epsilon >0$, s.d. 
+    \begin{align*}
+        &\psi(a+tv) > 0, \ \forall t\in(0,\epsilon)\\
+        & \psi(a+tv) < 0, \ \forall t\in (-\epsilon,0) 
+    \end{align*}
+    also $a+tv\notin A, \ \forall t\in (0,\epsilon)$ und $a+tv\in A, \ \forall t\in (-\epsilon,0)$, daher enthält jede Umgebung von $a$ Punkte in $A$ und dessen Komplement, also $a\in \partial A$. 
+\end{proof}
+Daraus sieht man direkt, dass der Rand eines Kompaktums mit glattem Rand eine $(n-1)$-dimensionale $\cali{C}^1$-Untermannigfaltigkeit ist. 
+\begin{satz}
+    Sei $A\subset \R^n$ ein Kompaktum mit glattem Rand und $a\in \partial A$. Dann existiert genau ein Vektor $\nu(a)\in \R^n$ mit den folgenden Eigenschaften
+    \begin{enumerate}[(1)]
+        \item $\nu(a)$ steht senkrecht auf $T_a(\partial A)$
+        \item $\Vert \nu(a)\Vert =1$
+        \item $\exists \epsilon >0$ mit 
+            $a + t\nu(a)\notin A, \ \forall t\in (0,\epsilon) $
+    \end{enumerate}
+\end{satz}
+\begin{proof}
+    Existenz: Sei $a\in \partial A$, $U\subset \R^n$ eine offene Umgebung von $a$, $\psi:U\to \R$ stetig differenzierbar mit $\nabla \psi\neq 0$ und 
+    \[
+    A\cap U = \{ x\in U : \psi(x)\le 0\}    
+    \]
+    Dann sei 
+    \[
+    \nu(a)\coloneqq \frac{\nabla\psi(a)}{\Vert \nabla \psi(a)\Vert}    
+    \]
+    Da wir wissen, dass $\partial A \cap U = \{ x\in U : \psi(x)=0\}$, folgt aus 6.(b), dass $\nu(a)$ ortogonal auf $T_a(\partial A)$ steht. Normiertheit ist klar und (3) folgt aus dem vorherigen Lemma. \\
+    Eindeutigkeit: Der Normalenvektorraum im Punkt $a$ ist ein-dimensional nach Satz 6.(c), daher $\nu(a)=\lambda \nabla \psi(a), \ \lambda \in \R$. Es folgt
+    \[
+    1=\Vert \nu(a) \Vert = \vert \lambda \vert \Vert \nabla \psi(a)\Vert \implies \vert \lambda \vert = \frac{1}{\Vert \nabla \psi(a)\Vert}     
+    \]
+    Wegen Lemma 3 und Bedingung (3) ist aber $\lambda >0$, das beendet den Beweis. 
+\end{proof}
+\begin{lemma}[Lemma von Lebesgue]
+    Sei $A\subset \R^n$ kompakt und $(U_\alpha)_{\alpha\in A}$ mit $U_\alpha \subset \R^n,\ \forall \alpha \in A$, eine offene Überdeckung von $A$.
+    Dann gibt es ein $\lambda > 0$ mit der Eigenschaft, dass für jede Teilmenge $K\subset \R^n$ mit $K\cap A \neq \varnothing$ und $\operatorname{diam} K \le \lambda$ gilt, dass $K\subset U_\alpha$ für ein $\alpha \in A$. 
+\end{lemma}
