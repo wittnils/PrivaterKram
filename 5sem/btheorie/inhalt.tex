@@ -1,0 +1,56 @@
+Sei $(\Gamma,\le)$ eine total geordnete (multiplikativ geschriebene) abelsche Gruppe, $A$ ein Ring. 
+\subsection*{Wiederholung}
+Eine \textit{Bewertung} $\vert \cdot \vert:A\to \Gamma \cup \{0\}$ ist eine Abbildung mit 
+\begin{enumerate}[(i)]
+   \item $\vert a+b\vert \le \max\{ \vert a\vert, \vert b\vert \}$ für alle $a,b\in A$
+    \item $\vert ab\vert = \vert a\vert \vert b \vert$ für alle $a,b\in A$
+    \item $\vert 0 \vert =0$ und $\vert 1\vert =1$
+\end{enumerate}
+die Menge $\vert \cdot \vert^{-1}(\{0\})\eqqcolon \operatorname{supp}(\vert \cdot \vert)$ heißt der \textit{Träger} von $\vert \cdot \vert$ und die Untergruppe in $\Gamma$, die von $\im (\vert \cdot \vert) \setminus \{0\}$ erzeugt wird, heißt Wertegruppe von $\vert \cdot \vert$ und wird 
+mit $\Gamma_{\vert\cdot \vert}$ bezeichnet. \\
+Zwei Bewertungen $\vert \cdot \vert_1, \ \vert \cdot \vert_2$ heißen äquivalent, wenn eine der äquivalenten Bedingungen erfüllt ist 
+\begin{enumerate}[(i)]
+    \item Es gibt einen Isomorphismus total georndeter Monoide $f:\Gamma_{\vert \cdot \vert_1}\cup \{0\}\to \Gamma_{\vert \cdot\vert_2}\cup \{0\}$ mit $f\circ \vert \cdot\vert_1 = \vert \cdot \vert_2$
+    \item $\supp (\vert\cdot\vert_1 )= \supp( \vert \cdot\vert_2)$ und $A(\vert\cdot\vert_1) = A(\vert \cdot\vert_2)$
+    \item Es gilt $\vert a\vert_1 \le \vert b\vert_1 \Leftrightarrow \vert a\vert_2 \le \vert b\vert_2$ für alle $a,b\in A$.
+\end{enumerate}
+\subsection*{Das Bewertungsspektrum eines Ringes}
+\begin{defn}
+    Das \textit{Bewertungsspektrum} von $A$ ist die Menge aller Äquivalenzklassen von Bewertungen auf $A$ und wird 
+    mit $\Spv{A}$ bezeichnet. Man betrachte für $f_1,\ldots,f_n,g\in A$
+    \[
+    U(\frac{f_1,\ldots,f_n}{g}) = \{ \vert \cdot \vert \in \Spv{A} : \vert f_i\vert \le \vert g\vert \neq 0, \ \forall i=1,\ldots,n\}    
+    \]
+    dann gilt für $f,f',g,g'\in A$, dass 
+    \[
+    U(\frac{f}{g})\cap U(\frac{f'}{g'}) = U(\frac{fg',f'g}{gg'})    
+    \]
+    \textit{Grund}: Es ist $\vert gg'\vert = \vert g\vert \vert g'\vert$ und daher $\vert gg'\vert \neq 0$ äquivalent zu $\vert g\vert,\vert g'\vert \neq 0$. $\vert fg' \vert \le \vert gg'\vert$ und $\vert f'g \vert \le \vert gg'\vert$ sind wegen $\vert g\vert,\vert g'\vert \neq 0$ äquivalent zu $\vert f\vert \le \vert g\vert$ und $\vert f'\vert \le \vert g'\vert$.
+    \\ Daher erzeugen die Mengen $U((f_1,\ldots,f_n)/g)$ mit $f_1,\ldots,f_n,g\in A$ eine Topologie auf $\Spv{A}$.
+\end{defn}
+Man hat eine Bijektion 
+\[
+\{ X\coloneqq (\mathfrak{p},R) \mid \mathfrak{p}\in \operatorname{Spec}(A), \ R \text{ Bur von } \operatorname{Frac}(A/\mathfrak{p}) \} \longleftrightarrow \Spv{A}    
+\]
+Sei $(\mathfrak{p},R)\in X$ auf $\kappa(\mathfrak{p})=\operatorname{Frac}(A/\mathfrak{p})$ haben wir die Bewertung
+\[
+\kappa(\mathfrak{p}) \to \kappa(\mathfrak{p})^\times / R^\times \cup \{0\}, \ x\mapsto \begin{cases}
+    xR^\times & x\neq 0 \\
+    0 & x=0
+\end{cases}    
+\]
+und kanonische Homomorphismen $\phi^\mathfrak{p}:A\to A/\mathfrak{p} \to \kappa(\mathfrak{p})$ dadurch erhalten wir dann eine Bewertung auf $A$. Diese sieht dann konkret aus 
+\[
+\vert \cdot \vert_\mathfrak{p}^R : A\to \kappa(\mathfrak{p})^\times / R^\times \cup\{0\}, x \mapsto \begin{cases}
+    \frac{x+\mathfrak{p}}{1+\mathfrak{p}}R^\times, & x\notin \mathfrak{p} \\
+    0, & x\in \mathfrak{p}
+\end{cases}  
+\]
+Ist andererseits $\vert \cdot \vert\in \Spv{A}$, dann ist $\mathfrak{p}\coloneqq \supp(\vert \cdot \vert)\in \operatorname{Spec}(A)$ und $\vert \cdot\vert$ definiert eine Bewertung auf $A/\mathfrak{p}$, denn seien $x,x'\in A$ mit $x-x'\in \mathfrak{p}$, dann gilt $\vert x\vert \le \max\{ \vert x-x'\vert,\vert x'\vert \}=\vert x'\vert$ und umgekehrt. Diese Bewertung auf $A/\mathfrak{p}$ setzt sich dann auf $\operatorname{Frac}(A/\mathfrak{p})$ fort.
+\begin{lemma}[Beschreibung der Fasern als RZ-Räume]
+    Sei $A$ ein Ring, dann gilt 
+    \begin{enumerate}[(i)]
+        \item Ist $A$ ein Körper, so gilt $\Spv{A} \cong_{\mathsf{Top}} \operatorname{RZ}(A)$
+        \item Die kanonische Abbildung $\supp : \Spv{A} \to \Spec{A},\ \vert\cdot\vert \mapsto \supp(\vert\cdot\vert)$ ist stetig (bzgl. der Zariski-Topologie auf $\Spec{A}$) und surjektiv. Für jedes $\mathfrak{p}\in \Spec{A}$ ist dessen Faser unter $\supp$ als topologischer Raum zu $\RZ{\operatorname{Frac}(A/\mathfrak{p})}$ isomorph.
+    \end{enumerate}
+\end{lemma}
