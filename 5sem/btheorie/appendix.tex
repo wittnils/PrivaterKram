@@ -1,0 +1,44 @@
+\subsection*{Appendix}
+Wir zeigen, dass die behauptete Bijektion  
+\[
+    X\coloneqq\{  (\mathfrak{p},R) \mid \mathfrak{p}\in \operatorname{Spec}(A), \ R \text{ Bur von } \operatorname{Frac}(A/\mathfrak{p}) \} \longleftrightarrow \Spv{A}    
+\]
+tatsächlich bijektiv ist. 
+\begin{proof}
+    Sei $\vert\cdot\vert \in \Spv{A}$ und $\mathfrak{p}\coloneqq \supp(\vert\cdot\vert)$ und $\vert \cdot \vert_2: \kappa(\mathfrak{p})\to \Gamma\cup \{0\}$ die induzierte Bewertung. Definiere $R_2\coloneqq \{ x\in \kappa(\mathfrak{p}) : \vert x\vert_2 \le 1\}$. Dann definiere 
+    \[
+    \vert\cdot\vert_3 : \kappa(\mathfrak{p}) \to \kappa(\mathfrak{p})^\times/R_2^\times \cup \{0\}, \quad x\mapsto \begin{cases}
+        xR_2^\times, & x\neq 0\\
+        0, & x=0
+    \end{cases}    
+    \] 
+    und sei $\vert\cdot\vert_4 = \vert\cdot \vert_3 \circ (A\to \kappa(\mathfrak{p}))$. Es ist z.z., dass $\vert \cdot\vert_4 \sim \vert \cdot \vert_1$. Tatsächlich, denn für $a,b\in A$ mit $a,b\notin \mathfrak{p}$ gilt
+    \begin{align*}
+        \vert a\vert_4 = &\left\vert \frac{a+\mathfrak{p}}{1+\mathfrak{p}} \right\vert_3 = \frac{a+\mathfrak{p}}{1+\mathfrak{p}}R_2^\times \le \frac{b+\mathfrak{p}}{1+\mathfrak{p}}R_2^\times = \vert b\vert_4 \\
+        \iff &\frac{a+\mathfrak{p}}{b+\mathfrak{p}}\in R_2 \iff \left\vert \frac{a+\mathfrak{p}}{b+\mathfrak{p}} \right\vert_2 \le 1 \iff \vert a\vert_1 \vert b\vert_1^{-1} \le 1
+    \end{align*}
+    außerdem bemerken wir, dass gilt
+    \[
+    \vert a\vert_4 = \left\vert \frac{a+\mathfrak{p}}{1+\mathfrak{p}} \right\vert_3 = 0 \Leftrightarrow \frac{a+\mathfrak{p}}{1+\mathfrak{p}} = 0 \Leftrightarrow a+\mathfrak{p} = 0 \Leftrightarrow \vert a\vert_1 = 0    
+    \]
+    wobei die erste Äquivalenz daraus folgt, dass $\supp(\vert\cdot\vert_3) = \{0\}$, da $\kappa(\mathfrak{p})$ ein Körper ist. \\
+    Sei $(\mathfrak{p},R)\in X$, so definiere 
+    \[
+    \vert \cdot \vert : \kappa(\mathfrak{p}) \to \kappa(\mathfrak{p})^\times/R^\times \cup \{0\}, \quad x\mapsto \begin{cases}
+        xR^\times, & x\neq 0 \\
+        0, & x=0
+    \end{cases}    
+    \]
+    und $\vert\cdot\vert_2 = \vert\cdot\vert \circ (A\to \kappa(\mathfrak{p}))$, dann gilt $\supp(\vert\cdot\vert_2) = \mathfrak{p}$. Definiere
+    \[
+    \vert \cdot\vert_3 : \kappa(\mathfrak{p}) \to \kappa(\mathfrak{p})^\times / R^\times \cup\{0\}, \quad  \frac{x+\mathfrak{p}}{y+\mathfrak{p}} \mapsto \vert x\vert_2 \vert y\vert_2^{-1}    
+    \]
+    Es ist zu zeigen, dass $\vert x\vert_3 \le 1 \Leftrightarrow x\in R$. Betrachte also 
+    \[
+    x=\frac{a+\mathfrak{p}}{b+\mathfrak{p}} \in \kappa(\mathfrak{p})    
+    \]
+    Es ist $x=0 \Leftrightarrow a\in \mathfrak{p} \Leftrightarrow \vert x\vert_3 =0$. Ist $x\neq 0$, also $a\notin \mathfrak{p}$, dann gilt 
+    \[
+    \vert x\vert_3 = \vert a\vert_2 \vert b\vert_2^{-1} = \frac{a+\mathfrak{p}}{1+\mathfrak{p}}R^\times\cdot \left(\frac{b+\mathfrak{p}}{1+\mathfrak{p}}R^\times\right)^{-1} = \frac{a+\mathfrak{p}}{b+\mathfrak{p}}R^\times \le 1R^\times \Leftrightarrow \frac{a+\mathfrak{p}}{b+\mathfrak{p}} \in R    
+    \]
+\end{proof}

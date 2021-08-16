@@ -1,0 +1,18 @@
+\newpage
+\subsection*{Funktorialität von $\mathsf{Spv}$}
+Seien $A,B$ zwei Ringe (kommutativ, mit $1$) und $\phi:A\to B$ ein Ringhomomorphismus, d.h. $B$ ist eine $A$-Algebra. 
+Dann haben wir die induzierte Abbildung 
+\[
+\Spv{\phi}:\Spv{B} \to \Spv{A}, \quad v \mapsto v\circ \phi    
+\]
+es für $f_1,\ldots,f_n,g\in A$:
+\[
+\Spv{\phi}^{-1}\left(U\left(\frac{f_1,\ldots,f_n}{g}\right)\right) = U\left(\frac{\phi(f_1,\ldots,f_n)}{\phi(g)}\right)    
+\]
+daher ist $\Spv{\phi}$ stetig. Es ist klar, dass $\Spv{\id_A} = \id_{\Spv{A}}$ und $\Spv{\psi\circ \phi} = \Spv{\phi} \circ \Spv{\psi}$ für gewisse Ringhomomorphismen $\phi,\psi$. 
+Daher haben wir einen kontravarianten Funktor 
+\begin{align*}
+    \operatorname{Spv} : \mathsf{CRing}^{\mathsf{op}} &\to \mathsf{Top}    \\
+    A &\mapsto \Spv{A} \\
+    [\phi:A\to B] &\mapsto \Spv{\phi}    
+\end{align*}

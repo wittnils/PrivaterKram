@@ -1,5 +1,6 @@
 \documentclass{scrartcl}
 \usepackage{microtype}
+\usepackage{appendix}
 \usepackage[scale=0.8]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -25,5 +26,10 @@
 \begin{document}
 \maketitle
 \vspace{-1cm}
-\input{inhalt.tex}
+\input{inh1.tex}
+\input{inh2.tex}
+\newpage
+\begin{appendices}
+\input{appendix}
+\end{appendices}
 \end{document}
