@@ -11,7 +11,7 @@ def solve_system(M,B,zeta,m,n):
 def truncated_cg_for_symm_systems(b,d_part,A,M,B,eps_rel):
     m = np.shape(B)[0]
     n = np.shape(B)[1]
-    l = 0
+
     alpha = 0 
     beta = 0
     q = 0
@@ -26,7 +26,6 @@ def truncated_cg_for_symm_systems(b,d_part,A,M,B,eps_rel):
     delta_new = 0
     delta_array = [delta]
     while delta >= eps_rel**2 * initial_delta:
-        print("iteration")
         q = np.dot(A,p)
         theta = np.dot(q,p)
         if theta > 0:
@@ -35,13 +34,11 @@ def truncated_cg_for_symm_systems(b,d_part,A,M,B,eps_rel):
             zeta = zeta + alpha*q
             p_new = solve_system(M,B,zeta,m,n)
             delta_new = - np.dot(zeta,p_new)
-            print(delta_new)
             beta = delta_new / delta
             p_new = p_new + beta* p
             p = p_new 
             delta = delta_new
             delta_array.append(delta) 
-            l = l+1
         else: 
             break 
     return(delta_array)
