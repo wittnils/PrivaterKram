@@ -1,0 +1,16 @@
+Sei $X$ ein topologischer Raum. 
+\begin{defn}
+    Eine Prägarbe von Mengen $\cali{F}$ ist eine Regel, die jedem $U\subset X$ offen eine Menge
+    $\cali{F}(U)$ zuordnet und jeder Inklusion $V\subset U\subset X$ offener Mengen eine Abbildung
+    $\rho^U_V:\cali{F}(U)\to \cali{F}(V)$, so dass $\rho^U_U=\id_{\cali{F}(U)}$ und $\rho^U_W = \rho^V_W\circ \rho^U_V$, falls $W\subset V\subset U$ offen.
+\end{defn}
+\begin{defn}
+    Ein Morphismus von Prägarben von Mengen $\phi:\cali{F}\to \cali{G}$ ist eine Regel, die jedem $U\subset X$ offen eine Abbildung $\phi(U):\cali{F}(U)\to \cali{G}(U)$ zuordnet, s.d. das folgende Diagramm
+    kommutiert 
+    \[
+    \begin{tikzcd}
+        \cali{F}(U) \arrow[r]\arrow[d] & \cali{G}(U)\arrow[d] \\
+        \cali{F}(V) \arrow[r]& \cali{G}(V)
+    \end{tikzcd}    
+    \] 
+\end{defn}
